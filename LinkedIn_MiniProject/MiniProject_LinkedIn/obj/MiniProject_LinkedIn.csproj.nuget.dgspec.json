@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\parv.gajipara\\Desktop\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj": {}
+    "C:\\Users\\parv.gajipara\\Desktop\\LinkeIn_MiniProject\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj": {}
   },
   "projects": {
-    "C:\\Users\\parv.gajipara\\Desktop\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj": {
+    "C:\\Users\\parv.gajipara\\Desktop\\LinkeIn_MiniProject\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\parv.gajipara\\Desktop\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj",
+        "projectUniqueName": "C:\\Users\\parv.gajipara\\Desktop\\LinkeIn_MiniProject\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj",
         "projectName": "MiniProject_LinkedIn",
-        "projectPath": "C:\\Users\\parv.gajipara\\Desktop\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj",
+        "projectPath": "C:\\Users\\parv.gajipara\\Desktop\\LinkeIn_MiniProject\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj",
         "packagesPath": "C:\\Users\\parv.gajipara\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\parv.gajipara\\Desktop\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\obj\\",
+        "outputPath": "C:\\Users\\parv.gajipara\\Desktop\\LinkeIn_MiniProject\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\parv.gajipara\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,12 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -52,7 +58,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[6.0.16, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
