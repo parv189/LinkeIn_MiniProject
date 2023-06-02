@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MiniProject_LinkedIn.DTOs;
@@ -17,10 +19,12 @@ namespace MiniProject_LinkedIn.Controllers
         {
             _context = context;
         }
-
+        [EnableCors("Policy1")]
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO request)
         {
+            
+
             CreatePasswordHash(request.Password, out byte[] passwordhash, out byte[] passwordsalt);
 
             var user = new User_Information();
@@ -30,24 +34,44 @@ namespace MiniProject_LinkedIn.Controllers
             user.Email = request.Email;
             user.PasswordHash = passwordhash;
             user.PasswordSalt = passwordsalt;
-
+          
             _context.UserInformation.Add(user);
             await _context.SaveChangesAsync();
+            user.CreatedById = user.User_ID;
+            await _context.SaveChangesAsync();
             return Ok(user);
-
-        }
-        [HttpGet("getuser")]
-        public async Task<IActionResult> getdata()
-        {
-            var users = await _context.UserInformation.ToListAsync();
-            return Ok(users);
         }
         private void CreatePasswordHash(string password, out byte[] passwordhash , out byte[] passwordsalt)
+            {
+                var hamc = new HMACSHA512();
+                passwordsalt = hamc.Key;
+                passwordhash = hamc.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
+        [HttpPost("Login")]
+        public async Task<IActionResult> login(LoginDTO request)
         {
-            var hamc = new HMACSHA512();
-            passwordsalt = hamc.Key;
-            passwordhash = hamc.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            var user = await _context.UserInformation.FirstOrDefaultAsync(x=>x.Email == request.Email);
+            if(user == null)
+            {
+                user = await _context.UserInformation.FirstOrDefaultAsync(x=>x.PhoneNumber == request.PhoneNumber);
+                if(user == null)
+                {
+                    return Unauthorized("Invalid Email and PhoneNumber");
+                }
+            }
+            var hmac = new HMACSHA512(user.PasswordSalt);
+            var computehash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(request.Password));
+            for(int i = 0; i < computehash.Length; i++)
+            {
+                if (computehash[i] != user.PasswordHash[i])
+                {
+                    return Unauthorized("Invalid Password");
+                }
+            }
+            return Ok(user);
         }
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult>Editdata(int id,User_Information request)
         {
@@ -63,12 +87,26 @@ namespace MiniProject_LinkedIn.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
-        [HttpGet]
+
+        [HttpGet("Getuser")]
+        public async Task<IActionResult> getdata()
+        {
+            var x = await _context.UserInformation.ToListAsync();
+            return Ok(x);
+        }
+        [HttpGet("GetuLikes")]
+        public async Task<IActionResult> getlikes()
+        {
+            var users = await _context.PostLikes.ToListAsync();
+            return Ok(users);
+        }
+
+        //[HttpGet]
         //public async Task<IActionResult> getConnections()
-       // {
-       //     var x = _context.view1.FromSqlRaw("select * from connections");
+        // {
+        //     var x = _context.view1.FromSqlRaw("select * from connections");
         //    return Ok(x);
-       // }
+        // }
         [HttpGet("Connections")]
         public async Task<IActionResult> getConnections()
         {
@@ -77,10 +115,14 @@ namespace MiniProject_LinkedIn.Controllers
         }
 
          [HttpPost("CreateConnections")]
-         public async Task<IActionResult> postConnections()
+         public async Task<IActionResult> postConnections(UserConnections request)
         {
             UserConnections uc = new UserConnections();
+            uc.User_ID = request.User_ID;
+            uc.ConnectedUser_ID = request.ConnectedUser_ID;
             _context.UserConnections.Add(uc);
+            await _context.SaveChangesAsync();
+            uc.CreatedById = uc.User_ID;
             return Ok(uc);
         }
     }

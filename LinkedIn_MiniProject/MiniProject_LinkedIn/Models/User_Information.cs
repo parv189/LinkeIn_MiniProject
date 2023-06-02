@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_LinkedIn.Models
 {
@@ -36,41 +37,70 @@ namespace MiniProject_LinkedIn.Models
         public DateTime CreatedByDate { get; set; } = DateTime.Now;
         public int? ModifiedById { get; set; }
         public DateTime ModifiedByDate { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Experience> ? experiences { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Experience> ? experiences1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Experience> ? experiences2 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Skill>? skills { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Skill>? skills1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Skill>? skills2 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Project>? Project { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Project>? Project1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Project>? Project2 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<PostComments>? PostComments { get; set; }
+        [JsonIgnore]
         public virtual ICollection<PostComments>? PostComments1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<PostComments>? PostComments2 { get; set; }
+        [JsonIgnore]
 
-        public virtual ICollection<CommentLikes>?commentLikes { get; set; } 
-        public virtual ICollection<CommentLikes>?commentLikes1 { get; set; } 
-        public virtual ICollection<CommentLikes>?commentLikes2 { get; set; } 
+        public virtual ICollection<CommentLikes>?commentLikes { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<CommentLikes>?commentLikes1 { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<CommentLikes>?commentLikes2 { get; set; }
+        [JsonIgnore]
 
         public virtual ICollection<UserConnections>? UserConnections1 {get; set; }
+        [JsonIgnore]
         public virtual ICollection<UserConnections>? UserConnections2 {get; set; }
+        [JsonIgnore]
         public virtual ICollection<UserConnections>? UserConnections3 {get; set; }
+        [JsonIgnore]
         public virtual ICollection<UserConnections>? UserConnections4 {get; set; }
+        [JsonIgnore]
 
         public virtual ICollection<LicansesCertificate>? LicansesCertificate1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<LicansesCertificate>? LicansesCertificate2 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<LicansesCertificate>? LicansesCertificate3 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<User_Post> ? user_Posts { get; set; }
+        [JsonIgnore]
         public virtual ICollection<User_Post> ? user_Posts1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<User_Post> ? user_Posts2 { get; set; }
+        [JsonIgnore]
 
         public virtual ICollection<PostLikes>? postLikes { get; set; }
+        [JsonIgnore]
         public virtual ICollection<PostLikes>? postLikes1 { get; set; }
+        [JsonIgnore]
         public virtual ICollection<PostLikes>? postLikes2 { get; set; }
+        [JsonIgnore]
 
         public virtual User_Information? UserInformation1 { get; set; }
+        [JsonIgnore]
         public virtual User_Information? UserInformation2 { get; set; }
 
 
