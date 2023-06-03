@@ -50,13 +50,13 @@ namespace MiniProject_LinkedIn.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> login(LoginDTO request)
         {
-            var user = await _context.UserInformation.FirstOrDefaultAsync(x=>x.Email == request.Email);
+            var user = await _context.UserInformation.FirstOrDefaultAsync(x=>x.Email == request.EmailPhoneNumber);
             if(user == null)
             {
-                user = await _context.UserInformation.FirstOrDefaultAsync(x=>x.PhoneNumber == request.PhoneNumber);
+                user = await _context.UserInformation.FirstOrDefaultAsync(x=>x.PhoneNumber == request.EmailPhoneNumber);
                 if(user == null)
                 {
-                    return Unauthorized("Invalid Email and PhoneNumber");
+                    return Unauthorized("Invalid Email or PhoneNumber");
                 }
             }
             var hmac = new HMACSHA512(user.PasswordSalt);
@@ -107,12 +107,12 @@ namespace MiniProject_LinkedIn.Controllers
         //     var x = _context.view1.FromSqlRaw("select * from connections");
         //    return Ok(x);
         // }
-        [HttpGet("Connections")]
-        public async Task<IActionResult> getConnections()
-        {
-            var conn = await _context.UserConnections.ToListAsync();
-            return Ok(conn);
-        }
+        //[HttpGet("Connections")]
+        //public async Task<IActionResult> getConnections()
+        //{
+        //    var conn = await _context.UserConnections.ToListAsync();
+        //    return Ok(conn);
+        //}
 
          [HttpPost("CreateConnections")]
          public async Task<IActionResult> postConnections(UserConnections request)

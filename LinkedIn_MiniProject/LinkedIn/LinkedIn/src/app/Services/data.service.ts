@@ -11,4 +11,7 @@ export class DataService {
   AddUser(model:any){
     return this.http.post<any>('https://localhost:7050/api/Auth/register',model)
   }
+  LoginUser(model:any){
+    return this.http.post<any>('https://localhost:7050/api/Auth/Login',model)
+  }
 }

@@ -16,6 +16,7 @@ builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer("Server=PC0404\\MSSQL2019;Database=LinkedInDB;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true");
 });
 builder.Services.AddTransient<IUserInfoRepository, UserInformationRepository>();
+builder.Services.AddTransient<IConnectionRepo, UserConnectionRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Policy1",

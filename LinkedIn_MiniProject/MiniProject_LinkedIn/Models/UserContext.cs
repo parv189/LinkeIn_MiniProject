@@ -24,8 +24,12 @@ namespace MiniProject_LinkedIn.Models
             public DbSet<ParentObject>ParentObjects { get; set; }
             public DbSet<ObjectType> ObjectTypes { get; set; }
             public DbSet<View1> view1 { get; set; }
-
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
+        {
+            optionbuilder.UseSqlServer("Server=PC0404\\MSSQL2019;Database=LinkedInDB;Trusted_Connection=True;" +
+                "TrustServerCertificate=True;");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
             modelBuilder.Entity<User_Information>()
                    .HasOne(m => m.UserInformation1)

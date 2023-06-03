@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl} from '@angular/forms';
 import { DataService } from '../Services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,9 @@ export class SignUpComponent{
     phoneNumber : new FormControl(''),
     password : new FormControl('')
   })
-  constructor(private DataService:DataService){}
+  constructor(private DataService:DataService,
+    private router:Router
+    ){}
   onRegister(){
    this.DataService.AddUser(this.RegisterForm.value).subscribe({
     next:(res) =>{
@@ -23,5 +26,6 @@ export class SignUpComponent{
 
     }
    })
+    this.router.navigate(['/SignIn'])
   }
 }
