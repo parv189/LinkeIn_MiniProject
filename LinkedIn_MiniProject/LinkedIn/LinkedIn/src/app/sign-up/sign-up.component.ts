@@ -19,6 +19,10 @@ export class SignUpComponent{
   constructor(private DataService:DataService,
     private router:Router
     ){}
+
+  Login(){
+    this.router.navigate(['/SignIn'])
+  }
   onRegister(){
    this.DataService.AddUser(this.RegisterForm.value).subscribe({
     next:(res) =>{

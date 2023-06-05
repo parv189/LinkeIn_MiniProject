@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MiniProject_LinkedIn.Code.Interfaces;
@@ -15,10 +16,11 @@ namespace MiniProject_LinkedIn.Controllers
         {
             this.userInfo = userInfo;
         }
-        [HttpGet("{id}")]
-        public ActionResult<User_Information> GetUSerInfo(int id)
+        [EnableCors("Policy1")]
+        [HttpGet("{email}")]
+        public ActionResult<User_Information> GetUSerInfo(string email)
         {
-            var us =  userInfo.Find(x => x.User_ID == id).FirstOrDefault();
+            var us = userInfo.Find(x => x.Email == email).FirstOrDefault();
             if(us == null)
             {
                 return NotFound();

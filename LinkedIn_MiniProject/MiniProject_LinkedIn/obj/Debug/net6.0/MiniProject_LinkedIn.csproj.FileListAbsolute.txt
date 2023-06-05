@@ -162,3 +162,9 @@ C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProj
 C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\parv.gajipara\Desktop\LinkeIn_MiniProject\LinkedIn_MiniProject\MiniProject_LinkedIn\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
