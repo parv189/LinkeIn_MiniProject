@@ -1,6 +1,6 @@
 <div class="container-fluid bg-secondary d-flex justify-content-around d-flex align-items-center">
   <div>
-    <a routerLink="/home/profile" > <img class="m-2 border border-2" src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style="height: 60px ; width:60px; border-radius: 100%;border-color: aliceblue; background-color: aliceblue;"></a>
+    <a [routerLink]="['profile']" > <img class="m-2 border border-2" src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style="height: 60px ; width:60px; border-radius: 100%;border-color: aliceblue; background-color: aliceblue;"></a>
   </div>
   <div>
     <input class="form-control m-3" type="text" placeholder="Search" >
@@ -9,5 +9,6 @@
    <a routerLink="/home/chat"> <button class="btn btn-info m-3">Chat</button> </a>
   </div>
 </div>
-
 <router-outlet></router-outlet>
+
+

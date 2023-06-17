@@ -9,16 +9,16 @@ namespace MiniProject_LinkedIn.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UpdateUserInfo : ControllerBase
+    public class UserInfo : ControllerBase
     {
         private readonly IUserInfoRepository userInfo;
-        public UpdateUserInfo(IUserInfoRepository userInfo)
+        public UserInfo(IUserInfoRepository userInfo)
         {
             this.userInfo = userInfo;
         }
         [EnableCors("Policy1")]
         [HttpGet("{email}")]
-        public ActionResult<User_Information> GetUSerInfo(string email)
+        public ActionResult<User_Information> GetUserbyEmail(string email)
         {
             var us = userInfo.Find(x => x.Email == email).FirstOrDefault();
             if(us == null)
@@ -27,8 +27,9 @@ namespace MiniProject_LinkedIn.Controllers
             }
             return us;
         }
+        [EnableCors("Policy1")]
         [HttpPut("{id}")]
-        public ActionResult<User_Information> UpdateUser(int id, User_Information request)
+        public ActionResult<User_Information> UpdateUserbyId(int id, User_Information request)
         {
            if(id != request.User_ID)
             {
@@ -53,8 +54,8 @@ namespace MiniProject_LinkedIn.Controllers
             }
 
         }
-        [HttpGet]
-        public ActionResult<IEnumerable<User_Information>> GetUser()
+        [HttpGet("GetAllUsers")]
+        public ActionResult<IEnumerable<User_Information>> GetUsersInfo()
         {
             return userInfo.Index().ToList();
         }

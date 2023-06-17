@@ -25,7 +25,6 @@ UserId:number = 0;
         console.log(res);
         alert(res.status)
         console.log("Login Successful");
-        this.router.navigate(['/home'])
         let _token = this.jwtService.decodeToken(res.token);
         console.log(_token);
 
@@ -37,10 +36,11 @@ UserId:number = 0;
          //let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
          //console.log("decodedJWT"+decodedJWT[0]);
 
-         console.log('Name: ' + _token.unique_name);
-         localStorage.setItem('Name',_token.unique_name)
+         console.log('User_Id: ' + _token.unique_name);
+         localStorage.setItem('User_Id',_token.unique_name)
          console.log('Email: ' + _token.email);
          localStorage.setItem('Email',_token.email)
+         this.router.navigate(['/home'])
 
       },
       error: (err) => {

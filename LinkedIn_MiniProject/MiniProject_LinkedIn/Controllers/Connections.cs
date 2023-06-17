@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniProject_LinkedIn.Code.Interfaces;
 using MiniProject_LinkedIn.Models;
@@ -14,11 +15,24 @@ namespace MiniProject_LinkedIn.Controllers
         {
             this.connection = connection;
         }
+        [EnableCors("Policy1")]
         [HttpGet]
         public ActionResult<IEnumerable<UserConnections>> GetConnections()
         {
             return connection.Index().ToList();
         }
+        [EnableCors("Policy1")]
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<UserConnections>> GetConnectionsById(int id)
+        {
+            List<UserConnections> conn = connection.Find(x => x.User_ID == id).ToList();
+            if(conn == null)
+            {
+                return NotFound();
+            }
+            return conn;
+        }
+        [EnableCors("Policy1")]
         [HttpPost]
         public ActionResult<UserConnections> newConnection(UserConnections request)
         {

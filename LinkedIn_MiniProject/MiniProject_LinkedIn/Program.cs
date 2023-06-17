@@ -20,6 +20,7 @@ builder.Services.AddDbContext<UserContext>(options =>
 });
 builder.Services.AddTransient<IUserInfoRepository, UserInformationRepository>();
 builder.Services.AddTransient<IConnectionRepo, UserConnectionRepository>();
+builder.Services.AddTransient<IObjectType, ObjectTypeRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Policy1",

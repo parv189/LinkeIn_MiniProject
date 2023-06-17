@@ -18,9 +18,12 @@ export class DataService {
 
   }
   GetUser(Email:string|null){
-    return this.http.get<any>('https://localhost:7050/api/UpdateUserInfo/'+Email)
+    return this.http.get<any>('https://localhost:7050/api/UserInfo/'+Email)
   }
   UserInfo(model:any){
     return this.http.post<any>('https://localhost:7050/api/Auth/Login',model)
+  }
+  UpdateUser(id:number,model:any){
+    return this.http.put<any>('https://localhost:7050/api/UserInfo/'+id,model)
   }
 }

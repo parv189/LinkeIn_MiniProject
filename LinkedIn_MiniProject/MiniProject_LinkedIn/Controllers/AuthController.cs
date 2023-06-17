@@ -79,7 +79,7 @@ namespace MiniProject_LinkedIn.Controllers
             }
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.FirstName),
+                    new Claim(ClaimTypes.Name, user.User_ID.ToString()),
                     new Claim(ClaimTypes.Email, user.Email),
 
                 };
