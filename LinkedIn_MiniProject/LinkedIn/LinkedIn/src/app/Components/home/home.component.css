@@ -1,0 +1,11 @@
+.post{
+  background-color: rgb(221, 219, 219);
+  width:10%;
+  height: 100px;
+  color:rgb(75, 74, 74);
+  border-radius: 5px;
+}
+.post:hover{
+  transform: scale(1.2);
+
+}

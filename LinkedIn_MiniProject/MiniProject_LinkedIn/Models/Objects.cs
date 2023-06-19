@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_LinkedIn.Models
 {
-    public class Object
+    public class Objects
     {
         [Key]
         public int Object_Id { get; set; }
@@ -15,10 +16,7 @@ namespace MiniProject_LinkedIn.Models
         public DateTime? CreatedByDate { get; set; } = DateTime.Now;
         public int? ModifiedById { get; set; }
         public DateTime? ModifiedByDate { get; set; }
+        [JsonIgnore]
         public virtual ObjectType ? ObjectType { get; set; }
-
-        public virtual Location ? Location { get; set; }
-        public virtual Location ? Location1 { get; set; }
-        public virtual Location ? Location2 { get; set; }
     }
 }

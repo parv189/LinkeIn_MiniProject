@@ -1,11 +1,12 @@
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
-import { SettingsComponent } from './settings/settings.component';
+import { AccountPreferencesComponent } from './Components/account-preferences/account-preferences.component';
+import { UpdateProfileComponent } from './Components/update-profile/update-profile.component';
+import { SettingsComponent } from './Components/settings/settings.component';
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './Components/chat/chat.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './Components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -23,7 +24,8 @@ const routes1: Routes = [
              {path:'profile',component:ProfileComponent},
              {path:'chat',component:ChatComponent}]},
   {path:'Settings',component:SettingsComponent},
-  {path:'UpdateProfile',component:UpdateProfileComponent}
+  {path:'UpdateProfile',component:UpdateProfileComponent},
+  {path:'AccountPref',component:AccountPreferencesComponent},
 ];
 
 @NgModule({

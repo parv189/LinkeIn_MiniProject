@@ -20,10 +20,11 @@ namespace MiniProject_LinkedIn.Models
             public DbSet<User_Post> User_Post { get; set; }
             public DbSet<PostLikes> PostLikes { get; set; }
             public DbSet<PostComments> PostComments { get; set; }
-            public DbSet<Object> Objects { get; set; }
+            public DbSet<Objects> Objects { get; set; }
             public DbSet<ParentObject>ParentObjects { get; set; }
             public DbSet<ObjectType> ObjectTypes { get; set; }
             public DbSet<View1> view1 { get; set; }
+            public DbSet<Locations> Locations { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             optionbuilder.UseSqlServer("Server=PC0404\\MSSQL2019;Database=LinkedInDB;Trusted_Connection=True;" +
@@ -196,22 +197,7 @@ namespace MiniProject_LinkedIn.Models
                     .HasForeignKey(m => m.ModifiedById)
                     .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Location>()
-                   .HasOne(m => m.Object)
-                   .WithOne(t => t.Location)
-                   .HasForeignKey<Location>(m => m.City_Id)
-                   .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Location>()
-                    .HasOne(m => m.Object1)
-                    .WithOne(t => t.Location1)
-                    .HasForeignKey<Location>(m => m.State_Id)
-                    .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Location>()
-                    .HasOne(m => m.Object2)
-                    .WithOne(t => t.Location2)
-                    .HasForeignKey<Location>(m => m.country_Id)
-                    .OnDelete(DeleteBehavior.Restrict);
-
+           
 
 
 

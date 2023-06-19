@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import { DataService } from '../Services/data.service';
-import { user } from '../model';
+import { DataService } from '../../Services/data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,7 +9,7 @@ import { user } from '../model';
 export class ProfileComponent implements OnInit{
   Email:string|null = localStorage.getItem('Email')
   userData: any;
-  constructor(private data:DataService){}
+  constructor(private data:DataService, private router:Router){}
 
 ngOnInit(): void {
   this.loaddata();
@@ -23,5 +23,8 @@ loaddata(){
 
     }
   })
+}
+onBack(){
+  this.router.navigate(['/home'])
 }
 }

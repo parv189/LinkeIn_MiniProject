@@ -1,9 +1,9 @@
 a {
-  color: #428BCA;
+  color: #65a4db;
   text-decoration: none;
 }
 
 a:hover, a:focus {
-  color: #2A6496;
+  color: #076cc4;
   text-decoration: underline;
 }

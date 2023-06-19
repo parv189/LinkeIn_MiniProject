@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../Services/data.service';
+import { DataService } from '../../Services/data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,5 +8,5 @@ import { DataService } from '../Services/data.service';
 export class HomeComponent {
 
 constructor(private data:DataService){}
- 
+
 }

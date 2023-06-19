@@ -7,7 +7,6 @@ using MiniProject_LinkedIn.Code.SqlServer;
 using MiniProject_LinkedIn.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -21,6 +20,8 @@ builder.Services.AddDbContext<UserContext>(options =>
 builder.Services.AddTransient<IUserInfoRepository, UserInformationRepository>();
 builder.Services.AddTransient<IConnectionRepo, UserConnectionRepository>();
 builder.Services.AddTransient<IObjectType, ObjectTypeRepository>();
+builder.Services.AddTransient<IObjects, ObjectRepository>();
+builder.Services.AddTransient<IUserPost, UserPostRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Policy1",

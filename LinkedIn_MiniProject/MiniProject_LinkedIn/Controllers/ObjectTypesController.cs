@@ -27,7 +27,7 @@ namespace MiniProject_LinkedIn.Controllers
         }
         [EnableCors("Policy1")]
         [HttpGet]
-        public ActionResult<IEnumerator<ObjectType>> GetObjectType()
+        public ActionResult<IEnumerable<ObjectType>> GetObjectType()
         {
             return objectType.Index().ToList();
         }

@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { DataService } from '../Services/data.service';
+import { DataService } from '../../Services/data.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-settings',
@@ -22,8 +22,8 @@ this.data.GetUser(this.Email).subscribe({
   }
 })
 }
-OnUpdate(){
-  this.router.navigate(['/UpdateProfile'])
+AccountPref(){
+  this.router.navigate(['/AccountPref'])
 }
 OnBack(){
   this.router.navigate(['/home/profile'])

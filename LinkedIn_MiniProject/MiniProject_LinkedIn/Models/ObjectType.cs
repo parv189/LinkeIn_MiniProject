@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MiniProject_LinkedIn.Models
 {
@@ -13,8 +14,10 @@ namespace MiniProject_LinkedIn.Models
         public int? ModifiedById { get; set; }
         public DateTime? ModifiedByDate { get; set; }
 
+        [JsonIgnore]
         public virtual ParentObject ? ParentObject { get; set; }
-        public virtual ICollection<Object> ? Objects { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Objects> ? Objects { get; set; }
 
     }
 }

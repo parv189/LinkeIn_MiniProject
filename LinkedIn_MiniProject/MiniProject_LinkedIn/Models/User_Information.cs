@@ -27,7 +27,7 @@ namespace MiniProject_LinkedIn.Models
 
         public string? User_Background_photo { get; set; }
         public string? User_Headline { get; set; }
-        public string? User_Current_position { get; set; } 
+        public string? User_Current_position { get; set; }
         public string? User_Education { get; set; }
         public string? User_Location { get; set; }
         public string? User_Industry { get; set; }

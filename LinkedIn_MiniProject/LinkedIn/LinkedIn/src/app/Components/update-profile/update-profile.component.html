@@ -18,7 +18,7 @@
             </div> -->
             <form *ngIf="userData">
               <div class="text-center mb-5">
-                <label for="book">Update Book</label>
+                <label for="book">Update Profile</label>
               </div>
               <div class="row offset-3">
                 <div class="col col-md-6">
@@ -69,25 +69,55 @@
                 </div>
               </div>
               <div class="row offset-3">
-                <div class="col col-md-6">
+                <label for="user_Education" class="form-label">Location</label>
+                <div class="col col-md-2">
                   <div class="mb-3">
-                    <label for="Status" class="form-label">Status</label>
-                    <input type="text" class="form-control" name="Status"[(ngModel)]="userData.status">
+                    <label for="user_Education" class="form-label">country</label>
+                      <select class="form-control" name="country"  (change)="onChange1($event)" [(ngModel)]="selectedCountry">
+                        <option value="select">--Select--</option>
+                        <option *ngFor="let item of country" [value]="item.location">{{item.location}}</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col col-md-2">
+                  <div class="mb-3">
+                    <label for="user_Education" class="form-label">State</label>
+                      <select class="form-control" name="state"  (change)="onChange2($event)" [(ngModel)]="selectedState">
+                        <option value="select">--Select--</option>
+                        <option *ngFor="let item of stste" [value]="item.location">{{item.location}}</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col col-md-2">
+                  <div class="mb-3">
+                    <label for="user_Education" class="form-label">City</label>
+                      <select class="form-control" name="City"  (change)="onChange3($event)" [(ngModel)]="selectedCity">
+                        <option value="select">--select--</option>
+                        <option *ngFor="let item of city" [value]="item.location">{{item.location}}</option>
+                      </select>
                   </div>
                 </div>
               </div>
-              <div class="row offset-3">
+              <!-- <div class="row offset-3">
                 <div class="col col-md-6">
                   <div class="mb-3">
-                    <label for="Status" class="form-label">Status</label>
-                    <input type="text" class="form-control" name="Status"[(ngModel)]="userData.status">
+                    <label for="user_Summary" class="form-label">Summary</label>
+                    <input type="text" class="form-control" name="user_Summary"[(ngModel)]="userData.user_Summary">
                   </div>
                 </div>
-              </div>
+              </div> -->
+              <!-- <div class="row offset-3">
+                <div class="col col-md-6">
+                  <div class="mb-3">
+                    <label for="user_Contact_Info" class="form-label">Contact_Information</label>
+                    <input type="text" class="form-control" name="user_Contact_Info"[(ngModel)]="userData.user_Contact_Info">
+                  </div>
+                </div>
+              </div> -->
               <div class="row offset-3">
                 <div class="col col-md-6">
                   <div class="mb-3">
-                    <label for="Image" class="form-label">Image</label>
+                    <label for="Image" class="form-label">Profile Picture</label>
                     <input type="file" (change)="onselected($event)" class="form-control" name="Image" [(ngModel)]="userData.image">
                   </div>
                 </div>
@@ -96,7 +126,7 @@
                 <div class="col col-md-6">
                   <div class="mb-3 text-center">
                     <div>
-                      <button type="submit" class="btn btn-primary" (click)="onupdatebook()">Add</button>
+                      <button type="submit" class="btn btn-primary" (click)="onupdateuser()">Update</button>
                     </div>
                   </div>
                 </div>

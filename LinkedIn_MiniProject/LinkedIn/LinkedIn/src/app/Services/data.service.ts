@@ -26,4 +26,7 @@ export class DataService {
   UpdateUser(id:number,model:any){
     return this.http.put<any>('https://localhost:7050/api/UserInfo/'+id,model)
   }
+  Getlocation(id:Number){
+    return this.http.get<any>('https://localhost:7050/api/Location/'+id)
+  }
 }

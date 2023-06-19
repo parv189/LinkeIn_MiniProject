@@ -14,7 +14,6 @@ namespace MiniProject_LinkedIn.Models
         public DateTime? CreatedByDate { get; set; } = DateTime.Now;
         public int? ModifiedById { get; set; }
         public DateTime? ModifiedByDate { get; set; }
-        public Location ? Location { get; set; }
         public virtual Experience ? Experience { get; set; }
     }
 }
