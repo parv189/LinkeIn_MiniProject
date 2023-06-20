@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "MiniProject_LinkedIn/1.0.0": {
         "dependencies": {
+          "AWSSDK.S3": "3.7.106",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.16",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
           "Microsoft.EntityFrameworkCore": "7.0.5",
@@ -20,6 +21,25 @@
         },
         "runtime": {
           "MiniProject_LinkedIn.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.107.7": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.107.7"
+          }
+        }
+      },
+      "AWSSDK.S3/3.7.106": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.107.7"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.106.0"
+          }
         }
       },
       "Azure.Core/1.24.0": {
@@ -987,6 +1007,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/3.7.107.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NFY7Qe3uKEadoXtzBO76+qNgAdbWc0A8SCRznIQKLo78LYRyc9kgBmBQEzwqcgXf69xxsi6BBq1FbExyRnZbpQ==",
+      "path": "awssdk.core/3.7.107.7",
+      "hashPath": "awssdk.core.3.7.107.7.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.106": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q37HV2lmg5l1l4eF/2RNOW34IE28p5ajzfjTdAnCZZmoKBj7dQc4nfzI5x3IXb9/P0Mbu5DdyZ4BqvGqMBTgbQ==",
+      "path": "awssdk.s3/3.7.106",
+      "hashPath": "awssdk.s3.3.7.106.nupkg.sha512"
     },
     "Azure.Core/1.24.0": {
       "type": "package",

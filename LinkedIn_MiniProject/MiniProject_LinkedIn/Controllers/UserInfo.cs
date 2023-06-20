@@ -54,6 +54,7 @@ namespace MiniProject_LinkedIn.Controllers
             }
 
         }
+        [EnableCors("Policy1")]
         [HttpGet("GetAllUsers")]
         public ActionResult<IEnumerable<User_Information>> GetUsersInfo()
         {

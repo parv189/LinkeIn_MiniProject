@@ -14,6 +14,10 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './Components/settings/settings.component';
 import { UpdateProfileComponent } from './Components/update-profile/update-profile.component';
 import { AccountPreferencesComponent } from './Components/account-preferences/account-preferences.component';
+import { AddPostComponent } from './Post_Components/add-post/add-post.component';
+import { ShowAllPostsComponent } from './Post_Components/show-all-posts/show-all-posts.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchFilterPipe } from './Pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { AccountPreferencesComponent } from './Components/account-preferences/ac
     ChatComponent,
     SettingsComponent,
     UpdateProfileComponent,
-    AccountPreferencesComponent
+    AccountPreferencesComponent,
+    AddPostComponent,
+    ShowAllPostsComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { AccountPreferencesComponent } from './Components/account-preferences/ac
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,5 @@
+import { ShowAllPostsComponent } from './Post_Components/show-all-posts/show-all-posts.component';
+import { AddPostComponent } from './Post_Components/add-post/add-post.component';
 import { AccountPreferencesComponent } from './Components/account-preferences/account-preferences.component';
 import { UpdateProfileComponent } from './Components/update-profile/update-profile.component';
 import { SettingsComponent } from './Components/settings/settings.component';
@@ -26,6 +28,8 @@ const routes1: Routes = [
   {path:'Settings',component:SettingsComponent},
   {path:'UpdateProfile',component:UpdateProfileComponent},
   {path:'AccountPref',component:AccountPreferencesComponent},
+  {path:'Addpost',component:AddPostComponent},
+  {path:'ShowAllposts',component:ShowAllPostsComponent},
 ];
 
 @NgModule({

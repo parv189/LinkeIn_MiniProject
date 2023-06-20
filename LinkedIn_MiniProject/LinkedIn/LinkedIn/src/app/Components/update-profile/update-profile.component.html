@@ -64,7 +64,7 @@
                 <div class="col col-md-6">
                   <div class="mb-3">
                     <label for="user_Education" class="form-label">Education</label>
-                    <input type="text" class="form-control" name="user_Education"[(ngModel)]="userData.user_Education">
+                    <input type="text" class="form-control" name="user_Education" [(ngModel)]="userData.user_Education">
                   </div>
                 </div>
               </div>
@@ -117,8 +117,9 @@
               <div class="row offset-3">
                 <div class="col col-md-6">
                   <div class="mb-3">
-                    <label for="Image" class="form-label">Profile Picture</label>
-                    <input type="file" (change)="onselected($event)" class="form-control" name="Image" [(ngModel)]="userData.image">
+                    <img src="{{userData.user_Profile_photo}}" style="height: 40px; width: 40px;" alt="img">
+                    <label for="Image" class="form-label ms-2">Profile Picture</label>
+                    <input type="file" (change)="onselected($event)" class="form-control" name="Image" accept="image/png, image/jpeg , image/webp" value="">
                   </div>
                 </div>
               </div>

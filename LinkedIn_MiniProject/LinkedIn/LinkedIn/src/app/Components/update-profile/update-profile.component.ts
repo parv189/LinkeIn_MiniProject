@@ -12,11 +12,13 @@ export class UpdateProfileComponent implements OnInit {
   country: any;
   stste: any;
   city: any;
-  myArray: Array<string> = [];
+  myArray1: Array<string> = [];
+  myArray2: Array<string> = [];
   selectedCity: string = '';
   selectedState: string = '';
   selectedCountry: string = '';
-  imgFile: any;
+  imgFile!: File;
+  filename!:string;
   Email: string | null = localStorage.getItem('Email');
   constructor(private data: DataService, private router: Router) {}
   ngOnInit(): void {
@@ -28,12 +30,16 @@ export class UpdateProfileComponent implements OnInit {
       next: (res) => {
         this.userData = res;
         console.log(this.userData);
-        this.myArray = this.userData.user_Location.split(', ');
-        console.log(this.myArray);
+        this.myArray1 = this.userData.user_Location.split(', ');
+        console.log(this.myArray1);
 
-        this.selectedCountry = this.myArray[2];
-        this.selectedState = this.myArray[1];
-        this.selectedCity = this.myArray[0];
+        this.selectedCountry = this.myArray1[2];
+        this.selectedState = this.myArray1[1];
+        this.selectedCity = this.myArray1[0];
+        this.myArray2 = this.userData.user_Profile_photo.split('/');
+        this.filename = this.myArray2[4]
+        this.filename = this.filename.substring(0,this.filename.length-19);
+        console.log((this.filename));
       },
     });
     this.data.Getlocation(3).subscribe({
@@ -59,20 +65,52 @@ export class UpdateProfileComponent implements OnInit {
     this.imgFile = event.target.files[0];
   }
   onupdateuser() {
-    this.userData.user_Location =
-      this.selectedCity +
-      ', ' +
-      this.selectedState +
-      ', ' +
-      this.selectedCountry;
-    this.data
-      .UpdateUser(Number(localStorage.getItem('User_Id')), this.userData)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.router.navigate(['/home/profile']);
-        },
-      });
+    const form = new FormData();
+    form.append('file', this.imgFile as File);
+    this.data.Addfile(form).subscribe({
+      next:(res)=>{
+        console.log(res);
+        let url : string = res.url;
+        // if(res.url == null){
+        //   this.userData.user_Profile_photo
+        // }
+        this.userData.user_Profile_photo = url;
+        this.userData.user_Location =
+          this.selectedCity +
+          ', ' +
+          this.selectedState +
+          ', ' +
+          this.selectedCountry;
+        this.data
+          .UpdateUser(Number(localStorage.getItem('User_Id')), this.userData)
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+              this.router.navigate(['/home/profile']);
+            },
+          });
+      },
+      error:(err)=>{
+        console.log(err.error.status == 400);
+        if(err.error.status == 400){
+          this.userData.user_Profile_photo = this.userData.user_Profile_photo
+          this.userData.user_Location =
+          this.selectedCity +
+          ', ' +
+          this.selectedState +
+          ', ' +
+          this.selectedCountry;
+        this.data
+          .UpdateUser(Number(localStorage.getItem('User_Id')), this.userData)
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+              this.router.navigate(['/home/profile']);
+            },
+          });
+        }
+      }
+    })
   }
   onChange1(e: any) {
     this.selectedCountry = e.target.value;

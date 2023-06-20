@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit{
   Email:string|null = localStorage.getItem('Email')
+  id:number|null = Number(localStorage.getItem('User_Id'));
   userData: any;
+  userPost:Array<any> = [];
   constructor(private data:DataService, private router:Router){}
 
 ngOnInit(): void {
@@ -22,9 +24,21 @@ loaddata(){
     console.log(res);
 
     }
+  });
+  this.data.GetPostsofuser(this.id).subscribe({
+    next : (res)=>{
+      this.userPost = res;
+      console.log(this.userPost);
+
+
+    }
   })
+
 }
 onBack(){
   this.router.navigate(['/home'])
+}
+onShowAllPosts(){
+  this.router.navigate(['/ShowAllposts'])
 }
 }

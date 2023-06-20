@@ -1,10 +1,11 @@
 <div class="container-fluid m-0 p-0">
   <div class="container-fluid bg-secondary d-flex justify-content-around d-flex align-items-center position-sticky top-0">
     <div>
-      <a [routerLink]="['profile']" > <img class="m-2 border border-2" src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style="height: 60px ; width:60px; border-radius: 100%;border-color: aliceblue; background-color: aliceblue;"></a>
+      <a [routerLink]="['profile']" > <img class="m-2 border border-2" [src]="userData.user_Profile_photo" alt="Profile" style="height: 60px ; width:60px; border-radius: 100%;border-color: aliceblue; background-color: aliceblue;"></a>
     </div>
     <div>
-      <input class="form-control m-3" type="text" placeholder="Search" >
+      <input class="form-control m-3" type="text" name="searchTerm" placeholder="Search" aria-label="Searchbox" aria-describedby="basic-addon1"
+      [(ngModel)]="searchTerm" (input)="search(searchTerm)">
     </div>
     <div>
      <a routerLink="/home/chat"> <button class="btn btn-info m-3">Chat</button> </a>
@@ -12,11 +13,24 @@
   </div>
   <router-outlet></router-outlet>
   <div style="background-color: #eee; height:100vh;overflow: auto">
-    <div class="d-flex align-items-center justify-content-center post position-fixed top-0px">
-      <div>
+    <div class="d-flex align-items-center justify-content-center post position-absolute top-0px start-0px z-index-1">
+      <div (click)="onAddPost()">
         Add Post
       </div>
     </div>
+    <div class="text-center d-flex justify-content-center" *ngFor="let x of userdata | searchFilter: searchTerm; index as i">
+      <ng-container *ngIf="x.firstName != ''">
+        <ng-container *ngIf="searchTerm != ''">
+          <div class="card " style="width: 300px;">
+            <div class="card-body d-flex align-items-center">
+                <img [src]="x.user_Profile_photo" alt="Image" style="height: 40px; width: 40px;border-radius: 100%;">
+                <p class="mx-4 h6">{{x.firstName+" "+x.lastName}}</p>
+            </div>
+          </div>
+        </ng-container>
+    </ng-container>
+    </div>
+
   </div>
 </div>
 

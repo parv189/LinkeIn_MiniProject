@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Amazon;
+using Amazon.S3;
+using Amazon.S3.Transfer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +23,8 @@ namespace MiniProject_LinkedIn.Controllers
     {
         private readonly UserContext _context;
         private readonly IConfiguration _config;
-
+        private const string BucketName = "forlinkedinminiproject";
+       
         public AuthController(UserContext context, IConfiguration config)
         {
             _context = context;
@@ -155,6 +159,38 @@ namespace MiniProject_LinkedIn.Controllers
             await _context.SaveChangesAsync();
             uc.CreatedById = uc.User_ID;
             return Ok(uc);
+        }
+        [EnableCors("Policy1")]
+        [HttpPost("Add_File")]
+        public async Task<IActionResult> GetUrl(IFormFile file)
+        {
+            if(file == null || file.Length == 0)
+            {
+                return BadRequest("No File Specified");
+            }
+            var destkey = $"Images/{file.FileName.ToLower() + DateTime.Now.ToString()}";
+            using (var client = new AmazonS3Client(Amazon.RegionEndpoint.APSouth1))
+            {
+                using (var transferUtility = new TransferUtility(client))
+                {
+                    var transferUtilityRequest = new TransferUtilityUploadRequest
+                    {
+                        BucketName = BucketName,
+                        Key = destkey,
+                        InputStream = file.OpenReadStream(),
+                        //CannedACL = S3CannedACL.PublicRead // Optional: Set the desired ACL for the uploaded file
+                    };
+                    await transferUtility.UploadAsync(transferUtilityRequest);
+                }
+            }
+            var reg = RegionEndpoint.APSouth1;
+            var url = $"https://{BucketName}.s3.{reg.SystemName}.amazonaws.com/{destkey}";
+            var resp = new
+            {
+                Message = "File uploaded successfully.",
+                url
+            };
+            return Ok(resp);
         }
     }
 }

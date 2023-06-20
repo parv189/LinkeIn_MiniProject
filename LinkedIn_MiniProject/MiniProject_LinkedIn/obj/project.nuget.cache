@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "qVhW9wxda8X9rFboYhvP18zKrCIs7pxnkE75UClf44++nNJ7whLEu7wEF+Y9e+jkDh/r/7BGD49xLjZawDkEcg==",
+  "dgSpecHash": "csozD5/pLUFfDVXWwibSm9EfUjl6Z/DbeHFm2yH0YYsX9KaTdQMCyqIcMbWxKuAjA5rynGy7mhNpQzhKpV4CBQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\parv.gajipara\\Desktop\\LinkeIn_MiniProject\\LinkedIn_MiniProject\\MiniProject_LinkedIn\\MiniProject_LinkedIn.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\parv.gajipara\\.nuget\\packages\\awssdk.core\\3.7.107.7\\awssdk.core.3.7.107.7.nupkg.sha512",
+    "C:\\Users\\parv.gajipara\\.nuget\\packages\\awssdk.s3\\3.7.106\\awssdk.s3.3.7.106.nupkg.sha512",
     "C:\\Users\\parv.gajipara\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\parv.gajipara\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\parv.gajipara\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

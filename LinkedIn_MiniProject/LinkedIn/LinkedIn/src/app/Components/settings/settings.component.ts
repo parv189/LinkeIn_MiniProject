@@ -28,4 +28,9 @@ AccountPref(){
 OnBack(){
   this.router.navigate(['/home/profile'])
 }
+onLogout(){
+  localStorage.removeItem("Email")
+  localStorage.removeItem("User_Id")
+  this.router.navigate(['/SignIn'])
+}
 }
