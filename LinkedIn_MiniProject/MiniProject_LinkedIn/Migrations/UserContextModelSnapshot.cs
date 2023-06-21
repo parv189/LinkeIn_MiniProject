@@ -89,10 +89,6 @@ namespace MiniProject_LinkedIn.Migrations
 
                     b.HasKey("Company_Id");
 
-                    b.HasIndex("Location_Id")
-                        .IsUnique()
-                        .HasFilter("[Location_Id] IS NOT NULL");
-
                     b.ToTable("Company");
                 });
 
@@ -192,42 +188,18 @@ namespace MiniProject_LinkedIn.Migrations
                     b.ToTable("LicansesCertificate");
                 });
 
-            modelBuilder.Entity("MiniProject_LinkedIn.Models.Location", b =>
+            modelBuilder.Entity("MiniProject_LinkedIn.Models.Locations", b =>
                 {
-                    b.Property<int>("Location_Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Location_Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("City_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("CreatedByDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModifiedByDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("ModifiedById")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("State_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("country_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Location_Id");
-
-                    b.HasIndex("City_Id");
-
-                    b.HasIndex("State_Id");
-
-                    b.HasIndex("country_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("Locations");
                 });
@@ -696,15 +668,6 @@ namespace MiniProject_LinkedIn.Migrations
                     b.Navigation("UserInformation2");
                 });
 
-            modelBuilder.Entity("MiniProject_LinkedIn.Models.Company", b =>
-                {
-                    b.HasOne("MiniProject_LinkedIn.Models.Location", "Location")
-                        .WithOne("Company")
-                        .HasForeignKey("MiniProject_LinkedIn.Models.Company", "Location_Id");
-
-                    b.Navigation("Location");
-                });
-
             modelBuilder.Entity("MiniProject_LinkedIn.Models.Experience", b =>
                 {
                     b.HasOne("MiniProject_LinkedIn.Models.Company", "Company")
@@ -757,30 +720,6 @@ namespace MiniProject_LinkedIn.Migrations
                     b.Navigation("UserInformation2");
 
                     b.Navigation("UserInformation3");
-                });
-
-            modelBuilder.Entity("MiniProject_LinkedIn.Models.Location", b =>
-                {
-                    b.HasOne("MiniProject_LinkedIn.Models.Objects", "Object")
-                        .WithMany("Location")
-                        .HasForeignKey("City_Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("MiniProject_LinkedIn.Models.Objects", "Object1")
-                        .WithMany("Location1")
-                        .HasForeignKey("State_Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("MiniProject_LinkedIn.Models.Objects", "Object2")
-                        .WithMany("Location2")
-                        .HasForeignKey("country_Id")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Object");
-
-                    b.Navigation("Object1");
-
-                    b.Navigation("Object2");
                 });
 
             modelBuilder.Entity("MiniProject_LinkedIn.Models.Objects", b =>
@@ -986,25 +925,11 @@ namespace MiniProject_LinkedIn.Migrations
                     b.Navigation("Experience");
                 });
 
-            modelBuilder.Entity("MiniProject_LinkedIn.Models.Location", b =>
-                {
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("MiniProject_LinkedIn.Models.ObjectType", b =>
                 {
                     b.Navigation("Objects");
 
                     b.Navigation("ParentObject");
-                });
-
-            modelBuilder.Entity("MiniProject_LinkedIn.Models.Objects", b =>
-                {
-                    b.Navigation("Location");
-
-                    b.Navigation("Location1");
-
-                    b.Navigation("Location2");
                 });
 
             modelBuilder.Entity("MiniProject_LinkedIn.Models.PostComments", b =>

@@ -18,6 +18,7 @@ import { AddPostComponent } from './Post_Components/add-post/add-post.component'
 import { ShowAllPostsComponent } from './Post_Components/show-all-posts/show-all-posts.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchFilterPipe } from './Pipes/search-filter.pipe';
+import { ShowProfileOfOtherUserComponent } from './otherUser/show-profile-of-other-user/show-profile-of-other-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SearchFilterPipe } from './Pipes/search-filter.pipe';
     AccountPreferencesComponent,
     AddPostComponent,
     ShowAllPostsComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ShowProfileOfOtherUserComponent
   ],
   imports: [
     BrowserModule,

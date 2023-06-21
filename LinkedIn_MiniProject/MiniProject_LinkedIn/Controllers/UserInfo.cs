@@ -28,6 +28,17 @@ namespace MiniProject_LinkedIn.Controllers
             return us;
         }
         [EnableCors("Policy1")]
+        [HttpGet("getbyid/{id}")]
+        public ActionResult<User_Information> GetUserById(int id)
+        {
+            var us2 = userInfo.Find(x => x.User_ID == id).FirstOrDefault();
+            if (us2 == null)
+            {
+                return NotFound();
+            }
+            return us2;
+        }
+        [EnableCors("Policy1")]
         [HttpPut("{id}")]
         public ActionResult<User_Information> UpdateUserbyId(int id, User_Information request)
         {

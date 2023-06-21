@@ -36,7 +36,7 @@ this.data.Addfile(form).subscribe({
     this.data.AddNewPost(this.id ,this.PostForm.value).subscribe({
       next:(res)=>{
         console.log(res);
-        this.router.navigate(['/home/profile'])
+        this.router.navigate(['/profile'])
       }
     })
   }

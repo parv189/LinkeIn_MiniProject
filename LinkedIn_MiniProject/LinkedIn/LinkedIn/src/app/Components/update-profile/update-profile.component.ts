@@ -86,7 +86,7 @@ export class UpdateProfileComponent implements OnInit {
           .subscribe({
             next: (res) => {
               console.log(res);
-              this.router.navigate(['/home/profile']);
+              this.router.navigate(['/profile']);
             },
           });
       },
@@ -105,7 +105,7 @@ export class UpdateProfileComponent implements OnInit {
           .subscribe({
             next: (res) => {
               console.log(res);
-              this.router.navigate(['/home/profile']);
+              this.router.navigate(['/profile']);
             },
           });
         }

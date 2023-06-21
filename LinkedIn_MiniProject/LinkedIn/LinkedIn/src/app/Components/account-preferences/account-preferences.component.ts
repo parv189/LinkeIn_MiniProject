@@ -12,6 +12,6 @@ export class AccountPreferencesComponent {
     this.router.navigate(['/UpdateProfile'])
   }
   OnBack(){
-    this.router.navigate(['/home/profile'])
+    this.router.navigate(['/Settings'])
   }
 }

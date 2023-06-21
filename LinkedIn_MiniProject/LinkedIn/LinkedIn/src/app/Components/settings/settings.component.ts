@@ -26,7 +26,7 @@ AccountPref(){
   this.router.navigate(['/AccountPref'])
 }
 OnBack(){
-  this.router.navigate(['/home/profile'])
+  this.router.navigate(['/profile'])
 }
 onLogout(){
   localStorage.removeItem("Email")

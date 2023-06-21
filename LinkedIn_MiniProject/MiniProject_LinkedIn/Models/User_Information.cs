@@ -23,9 +23,9 @@ namespace MiniProject_LinkedIn.Models
         [Required]
         public byte[]? PasswordSalt { get; set; }
 
-        public string? User_Profile_photo { get; set; }
+        public string? User_Profile_photo { get; set; } = "https://forlinkedinminiproject.s3.ap-south-1.amazonaws.com/Images/profile.png21-06-2023 17:04:55";
 
-        public string? User_Background_photo { get; set; }
+        public string? User_Background_photo { get; set; } = "https://forlinkedinminiproject.s3.ap-south-1.amazonaws.com/Images/background.jpg21-06-2023 17:22:22";
         public string? User_Headline { get; set; }
         public string? User_Current_position { get; set; }
         public string? User_Education { get; set; }

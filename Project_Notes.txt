@@ -1,0 +1,8 @@
+#LinkedIn 
+---------------------------------------------------------------------
+fortawesome : npx ng add @fortawesome/angular-fontawesome
+
+
+
+
+chechout : request alert on bootsprape-2 position

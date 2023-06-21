@@ -1,11 +1,42 @@
+.nav{
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,75,147,1) 35%, rgba(0,212,255,1) 100%); */
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(1,118,255,1) 62%, rgba(0,224,255,1) 100%);
+}
 .post{
   background-color: rgb(221, 219, 219);
   width:10%;
   height: 100px;
   color:rgb(75, 74, 74);
   border-radius: 5px;
+  margin-top: 15px;
+  margin-left: 20px;
+  padding-top: 10px;
 }
 .post:hover{
   transform: scale(1.2);
 
+}
+.fixedpost{
+  position: fixed;
+  top:90px;
+  left: 10px;
+}
+.fixedreq{
+  position: fixed;
+  top:210px;
+  left: 10px;
+}
+
+.search:hover{
+  transform: scale(1.2);
+  margin-bottom: 7px;
+  margin-top: 5px;
+}
+.massage{
+  transform: scale(1.2);
+  color: rgb(64, 63, 88);
+}
+.massage:hover{
+  transform: scale(1.2);
+  color: rgb(111, 130, 134);
 }

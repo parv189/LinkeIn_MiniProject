@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { DataService } from '../../Services/data.service';
 import { Router } from '@angular/router';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,6 +12,8 @@ export class ProfileComponent implements OnInit{
   id:number|null = Number(localStorage.getItem('User_Id'));
   userData: any;
   userPost:Array<any> = [];
+
+  faArrowLeft=faArrowLeft
   constructor(private data:DataService, private router:Router){}
 
 ngOnInit(): void {

@@ -1,7 +1,8 @@
 import { faThumbsUp, faComments,faPaperPlane} from '@fortawesome/free-regular-svg-icons';
 import { Component,OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
-import { faHeart, faRepeat} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faRepeat,faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-show-all-posts',
   templateUrl: './show-all-posts.component.html',
@@ -17,15 +18,16 @@ faComments = faComments;
 faThumbsUp = faThumbsUp;
 faRepeat = faRepeat;
 faPaperPlane = faPaperPlane;
+faArrowLeft=faArrowLeft
 
-constructor(private data:DataService){}
+constructor(private data:DataService, private router:Router){}
   ngOnInit(): void {
     this.loaddata();
   }
   loaddata(){
     this.data.GetPostsofuser(this.id).subscribe({
       next:(res)=>{
-        this.userPosts = res;
+        this.userPosts = res.reverse();
       }
     });
     this.data.GetUser(this.Email).subscribe({
@@ -33,7 +35,11 @@ constructor(private data:DataService){}
         console.log(res);
 
         this.userData = res;
+        this.userData
       }
     })
+  }
+  onBack(){
+    this.router.navigate(['/profile'])
   }
 }
