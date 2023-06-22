@@ -1,41 +1,84 @@
 <div class="container-fluid m-0 p-0">
-  <div class="container-fluid nav d-flex justify-content-around d-flex align-items-center position-sticky top-0">
+  <div class="container-fluid nav d-flex justify-content-around d-flex align-items-center">
     <div>
-      <a [routerLink]="['/profile']" > <img class="m-2 border border-2" [src]="userData.user_Profile_photo" alt="Profile" style="height: 60px ; width:60px; border-radius: 100%;border-color: aliceblue; background-color: aliceblue;"></a>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img
+          src="https://forlinkedinminiproject.s3.ap-south-1.amazonaws.com/Images/linkedin-logo.png22-06-2023 10:32:08"
+          alt="Logo" style="width: 66px;" (click)="onLogo()">
+      </div>
+      <div class="input-group">
+        <div class="input-group-text" style="background-color:rgb(231, 241, 255);">
+          <fa-icon class="fs-6 p-0 m-0" [icon]="faMagnifyingGlass"></fa-icon>
+        </div>
+        <input class="form-control" type="text" name="searchTerm" placeholder="   Search" aria-label="Searchbox"
+          style="width: 300px;background-color: rgb(231, 241, 255);padding:2px 3px;"
+          aria-describedby="inputGroup-sizing-sm" [(ngModel)]="searchTerm" (input)="search(searchTerm)">
+      </div>
+    </div>
+    <div class="text-center d-flex">
+      <div class="mx-3">
+        <a class="icon" [routerLink]="['/home']" routerLinkActive="active"
+          [routerLinkActiveOptions]={exact:true}><fa-icon class="fs-6" [icon]="faHouse"></fa-icon><span class="d-block"
+            style="font-size:smaller;">Home</span></a>
+      </div>
+      <div class="mx-3">
+        <a class="icon" [routerLink]="['/home/MyNetwork']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}><fa-icon
+            class="fs-6" [icon]="faUserGroup"></fa-icon><span class="d-block" style="font-size:smaller;">My
+            Network</span></a>
+      </div>
+      <div class="mx-3">
+        <a class="icon" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}><fa-icon
+            class="fs-6" [icon]="faSuitcase"></fa-icon><span class="d-block" style="font-size:smaller;">Jobs</span></a>
+      </div>
+      <div class="mx-3">
+        <a class="icon" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}><fa-icon
+            class="fs-6" [icon]="faMessage"></fa-icon><span class="d-block"
+            style="font-size:smaller;">Messaging</span></a>
+      </div>
+      <div class="mx-3">
+        <a class="icon" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}><fa-icon
+            class="fs-6" [icon]="faBell"></fa-icon><span class="d-block"
+            style="font-size:smaller;">Notifications</span></a>
+      </div>
+      <div class="mx-3">
+        <a class="icon" [routerLink]="['/home/profile']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+          <img [src]="userData.user_Profile_photo" alt="Profile"
+            style="height: 22px ; width:22px; border-radius: 100%;">
+          <span class="d-block" style="font-size:smaller;">Me</span></a>
+      </div>
     </div>
     <div>
-      <input class="form-control" type="text" name="searchTerm" placeholder="Search" aria-label="Searchbox" aria-describedby="basic-addon1"
-      [(ngModel)]="searchTerm" (input)="search(searchTerm)">
-    </div>
-    <div>
-     <a routerLink="/home/chat"><fa-icon class="fs-1 massage"  [icon]="faEnvelope"></fa-icon></a>
     </div>
   </div>
-  <div style="background-color: #eee; height:100vh;overflow: auto">
-    <div (click)="onAddPost()" class="d-flex align-items-center justify-content-center post fixedpost z-index-1">
+  <div style="background-color: #eee;overflow: auto;">
+    <div (click)="onAddPost()" class="d-flex align-items-center justify-content-center post fixedpost">
       <div class="text-center">
-       <fa-icon class="fs-5" [icon]="faPlus"></fa-icon><p>Add Post</p>
+        <fa-icon class="fs-5" [icon]="faPlus"></fa-icon>
+        <p>Add Post</p>
       </div>
     </div>
-    <div (click)="onAddPost()" class="d-flex align-items-center justify-content-center post fixedreq  z-index-1">
+    <div (click)="onAddPost()" class="d-flex align-items-center justify-content-center post fixedreq">
       <div class="text-center">
-       <fa-icon class="fs-5" [icon]="faUserGroup"></fa-icon><p>My Connections</p>
+        <fa-icon class="fs-5" [icon]="faUserGroup"></fa-icon>
+        <p>My Connections</p>
       </div>
     </div>
-    <div class="d-flex justify-content-center" *ngFor="let x of userdata | searchFilter: searchTerm; index as i" >
-      <ng-container *ngIf="x.firstName != ''">
-        <ng-container *ngIf="searchTerm != ''">
-          <div class="card search" style="width: 300px;" (click)="onSearch(x.user_ID)">
-            <div class="card-body d-flex align-items-center">
+    <div class="fixedsearchresult">
+      <div class="d-flex justify-content-center" *ngFor="let x of userdata|searchFilter: searchTerm; index as i">
+        <ng-container *ngIf="x.firstName != ''">
+          <ng-container *ngIf="searchTerm != ''">
+            <div class="card search" style="width: 300px;" (click)="onSearch(x.user_ID)">
+              <div class="card-body d-flex align-items-center">
                 <img [src]="x.user_Profile_photo" alt="Image" style="height: 40px; width: 40px;border-radius: 100%;">
                 <p class="mx-4 h6">{{x.firstName+" "+x.lastName}}</p>
+              </div>
             </div>
-          </div>
+          </ng-container>
         </ng-container>
-    </ng-container>
+      </div>
     </div>
+    <router-outlet></router-outlet>
   </div>
-   <router-outlet></router-outlet>
 </div>
-
-

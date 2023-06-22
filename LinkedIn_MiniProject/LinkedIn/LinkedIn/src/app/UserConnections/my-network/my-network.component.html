@@ -1,0 +1,35 @@
+<section class="vh-100 " style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-sm-4; col-md-8 col-lg-6 col-xl-6" style="margin-top: 60px;">
+        <ng-container *ngFor="let item of Invitations">
+          <div *ngIf="item.status=='pending'" class="card" style="max-width: 640px;">
+            <div class="row g-0" style="height: 9rem;">
+              <div class="col-md-3 d-flex align-items-center">
+                <img class="m-3 " [src]="item.user_Profile_photo" alt="profile" style="height: 80px; width: 80px; border-radius: 100%;">
+              </div>
+              <div class="col-md-5">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.firstName+" "+item.lastName}}</h5>
+                  <p class="card-text">{{item.user_Headline}}</p>
+                  <p class="card-text position-absolute bottom-0 mb-3"><small class="text-muted">{{item.createdByDate|date:"dd-MMM"}}</small></p>
+                </div>
+              </div>
+              <div class="col-md-2 text-center d-flex align-items-center">
+                <div>
+                  <fa-icon class="fs-1" [icon]="faCircleXmark" style="color: black;" (click)="onReject(item.userConnection_Id)"></fa-icon>
+                </div>
+              </div>
+              <div class="col-md-2 text-center d-flex align-items-center">
+                <div>
+                  <fa-icon class="fs-1" [icon]="faCircleCheck" style="color: rgb(67, 67, 214);" (click)="onAccept(item.userConnection_Id)"></fa-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</section>

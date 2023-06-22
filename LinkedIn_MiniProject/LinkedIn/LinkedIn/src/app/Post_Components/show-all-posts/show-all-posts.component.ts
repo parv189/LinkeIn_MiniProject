@@ -40,6 +40,6 @@ constructor(private data:DataService, private router:Router){}
     })
   }
   onBack(){
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/home/profile'])
   }
 }

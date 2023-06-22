@@ -1,0 +1,38 @@
+<div class="container-fluid mx-0" style="background-color: rgb(221, 219, 219)  ">
+  <div class="mx-0 position-fixed top-o z-index-1 my-2" style="background-color: white;width: 40px;border-radius: 10%;" (click)="onBack()">
+    <fa-icon class="fs-4 ms-2" [icon]="faArrowLeft"></fa-icon>
+  </div>
+  <div class="row">
+    <div class="col col-md-12 d-flex justify-content-center" *ngFor="let post of userPosts">
+      <div class="card border border-0 mt-1" style="width: 20rem;">
+        <div class="d-flex align-items-center">
+          <div><img class="border border-secondary border-1 m-1" [src]="userData.user_Profile_photo" alt="Profile" style="height: 30px; width: 30px; border-radius: 100%;"></div>
+          <div><p class="mx-2 my-1">{{userData.firstName+" "+userData.lastName}}</p></div>
+        </div>
+        <img [src]="post.photo_Url" class="card-img-top" alt="posts" style="height: 20rem; width: 20rem;">
+        <div class="card-body">
+          <p class="card-text h5">{{post.content}}</p><hr>
+          <div class="d-flex justify-content-between">
+              <p class="m-0 p-0">0 likes</p>
+              <p  class="m-0 p-0">0 comments</p>
+          </div><hr>
+          <div class="d-flex justify-content-around text-center mt-3">
+            <div>
+              <fa-icon class="fs-5" [icon]="faThumbsUp"></fa-icon><p class="fs-6">Like</p>
+            </div>
+            <div>
+              <fa-icon class="fs-5" [icon]="faComments"></fa-icon><p class="fs-6">Comment</p>
+            </div>
+            <div>
+              <fa-icon class="fs-5" [icon]="faRepeat"></fa-icon><p class="fs-6">Repost</p>
+            </div>
+            <div>
+              <fa-icon class="fs-5" [icon]="faPaperPlane"></fa-icon><p class="fs-6">Send</p>
+            </div>
+          </div>
+          <p class="card-text position-absolute bottom-0 end-0 mx-2" style="color:rgb(95, 95, 95);">ceated on : {{post.createdByDate|date:"dd-MMM"}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

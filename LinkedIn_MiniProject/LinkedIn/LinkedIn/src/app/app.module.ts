@@ -19,6 +19,8 @@ import { ShowAllPostsComponent } from './Post_Components/show-all-posts/show-all
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchFilterPipe } from './Pipes/search-filter.pipe';
 import { ShowProfileOfOtherUserComponent } from './otherUser/show-profile-of-other-user/show-profile-of-other-user.component';
+import { ShowOtherAllPostsComponent } from './otherUser/show-other-all-posts/show-other-all-posts.component';
+import { MyNetworkComponent } from './UserConnections/my-network/my-network.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ShowProfileOfOtherUserComponent } from './otherUser/show-profile-of-oth
     AddPostComponent,
     ShowAllPostsComponent,
     SearchFilterPipe,
-    ShowProfileOfOtherUserComponent
+    ShowProfileOfOtherUserComponent,
+    ShowOtherAllPostsComponent,
+    MyNetworkComponent
   ],
   imports: [
     BrowserModule,

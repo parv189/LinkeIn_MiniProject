@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MiniProject_LinkedIn.Code.Interfaces;
 using MiniProject_LinkedIn.Models;
 
@@ -26,25 +27,52 @@ namespace MiniProject_LinkedIn.Controllers
         public ActionResult<IEnumerable<UserConnections>> GetConnectionsById(int id)
         {
             List<UserConnections> conn = connection.Find(x => x.User_ID == id).ToList();
-            if(conn == null)
+            if (conn == null)
             {
                 return NotFound();
             }
             return conn;
         }
         [EnableCors("Policy1")]
-        [HttpPost]
-        public ActionResult<UserConnections> newConnection(UserConnections request)
+        [HttpPost("{uid},{ouid}")]
+        public ActionResult<UserConnections> newConnection(int uid,int ouid)
         {
-            UserConnections us = new UserConnections();
-            us.User_ID = request.User_ID;
-            us.ConnectedUser_ID = request.ConnectedUser_ID;
-            var conn = connection.Add(us);
-            us.CreatedById = us.User_ID;
-            connection.Update(us);
+            UserConnections uc = new UserConnections();
+            uc.User_ID = uid;
+            uc.ConnectedUser_ID = ouid;
+            uc.status = "pending";
+            var conn = connection.Add(uc);
+            uc.CreatedById = uc.User_ID;
+            connection.Update(uc);
             return conn;
         }
+        [EnableCors("Policy1")]
+        [HttpPut("UpdateConnections/{id}")]
+        public ActionResult<UserConnections> UpdateUserbyId(int id, UserConnections request)
+        {
+            if (id != request.UserConnection_Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var updateconn = connection.Update(request);
+                return updateconn;
 
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (connection.IsExist(x => x.UserConnection_Id == request.UserConnection_Id))
+                {
+                    throw;
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+        }
 
     }
 }

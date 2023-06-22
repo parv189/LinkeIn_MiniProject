@@ -16,6 +16,7 @@ namespace MiniProject_LinkedIn.Models
         public DateTime? CreatedByDate { get; set; } = DateTime.Now;
         public int? ModifiedById { get; set; }
         public DateTime? ModifiedByDate { get; set; }
+        public string? status { get; set; }
         [JsonIgnore]
         public virtual User_Information? UserInformation1 { get; set; }
         [JsonIgnore]

@@ -145,6 +145,43 @@ namespace MiniProject_LinkedIn.Migrations
                     b.ToTable("Experience");
                 });
 
+            modelBuilder.Entity("MiniProject_LinkedIn.Models.Invitations", b =>
+                {
+                    b.Property<int>("UserConnection_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserConnection_Id"));
+
+                    b.Property<int?>("ConnectedUser_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedByDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User_Headline")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("User_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User_Profile_photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserConnection_Id");
+
+                    b.ToTable("Invitations");
+                });
+
             modelBuilder.Entity("MiniProject_LinkedIn.Models.LicansesCertificate", b =>
                 {
                     b.Property<int>("LC_Id")
@@ -486,6 +523,9 @@ namespace MiniProject_LinkedIn.Migrations
 
                     b.Property<int?>("User_ID")
                         .HasColumnType("int");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserConnection_Id");
 

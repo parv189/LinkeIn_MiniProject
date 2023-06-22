@@ -25,6 +25,7 @@ namespace MiniProject_LinkedIn.Models
             public DbSet<ObjectType> ObjectTypes { get; set; }
             public DbSet<View1> view1 { get; set; }
             public DbSet<Locations> Locations { get; set; }
+            public DbSet<Invitations> Invitations { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             optionbuilder.UseSqlServer("Server=PC0404\\MSSQL2019;Database=LinkedInDB;Trusted_Connection=True;" +

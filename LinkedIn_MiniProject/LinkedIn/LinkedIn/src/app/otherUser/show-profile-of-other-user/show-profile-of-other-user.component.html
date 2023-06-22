@@ -29,25 +29,30 @@
                 <p class="text-start h4 mb-1 mx-1 mx-md-4 mt-1 " style="color: rgb(95, 95, 95);" *ngIf="userData">
                   {{userData.user_Location}}</p>
               </div>
-              <div  class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1" style="padding-top: 60px; width:90%;margin-right: 0px;">
-                <div class="card " style="height: 8rem; width:100%;" *ngIf="userPost.length != 0">
-                  <div class="card-body d-flex" >
-                    <div>
-                      <img [src]="userPost[userPost.length-1].photo_Url" class="card-img-start rounded-1" alt="Post" style="height: 6rem;width: 6rem;">
-                    </div>
-                    <div>
-                      <p class="card-text  h5 mb-1 mx-1 mx-md-4 mt-1">{{userPost[userPost.length-1].content}}</p>
-                    </div>
-                    <div>
-                      <p class="position-absolute bottom-0 end-0 px-2 h6" style="color:rgb(95, 95, 95);">created on : {{userPost[userPost.length-1].createdByDate|date:"dd-MMM"}}</p>
+              <ng-container *ngIf="status == 'accepted'">
+                <div  class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1" style="padding-top: 60px; width:90%;margin-right: 0px;">
+                  <div class="card " style="height: 8rem; width:100%;" *ngIf="userPost.length != 0">
+                    <div class="card-body d-flex" >
+                      <div>
+                        <img [src]="userPost[userPost.length-1].photo_Url" class="card-img-start rounded-1" alt="Post" style="height: 6rem;width: 6rem;">
+                      </div>
+                      <div>
+                        <p class="card-text  h5 mb-1 mx-1 mx-md-4 mt-1">{{userPost[userPost.length-1].content}}</p>
+                      </div>
+                      <div>
+                        <p class="position-absolute bottom-0 end-0 px-2 h6" style="color:rgb(95, 95, 95);">created on : {{userPost[userPost.length-1].createdByDate|date:"dd-MMM"}}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1 h5 d-flex align-items-center justify-content-center post" (click)="onShowAllPosts()">
-                <div>
-                  See All Posts
+                <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1 h5 d-flex align-items-center justify-content-center post" (click)="onShowAllPosts()">
+                  <div>
+                    See All Posts
+                  </div>
                 </div>
+              </ng-container>
+              <div>
+                <button class="btn btn-primary"(click)="onConnect()">Connect</button>
               </div>
             </div>
           </div>

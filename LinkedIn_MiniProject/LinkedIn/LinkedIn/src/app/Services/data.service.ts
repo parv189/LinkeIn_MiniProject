@@ -48,7 +48,21 @@ searchid:number=0;
   GetPostsofuser(id:number|null){
     return this.http.get<any>('https://localhost:7050/api/User_Post/'+id)
   }
-
+  GetConnections(){
+    return this.http.get<any>('https://localhost:7050/api/Connections')
+  }
+  GetConnectionsById(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/Connections/'+id)
+  }
+  UpdateConnectionsByConnId(id:number,model:any){
+    return this.http.put<any>('https://localhost:7050/api/Connections/UpdateConnections/'+id,model)
+  }
+  AddInvitation(uid:number,ouid:number){
+    return this.http.post<any>('https://localhost:7050/api/Connections/'+uid,ouid)
+  }
+  GetInvitations(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/Invitations/'+id)
+  }
 
 
 

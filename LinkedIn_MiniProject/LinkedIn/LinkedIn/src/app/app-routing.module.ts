@@ -1,3 +1,5 @@
+import { MyNetworkComponent } from './UserConnections/my-network/my-network.component';
+import { ShowOtherAllPostsComponent } from './otherUser/show-other-all-posts/show-other-all-posts.component';
 import { ShowProfileOfOtherUserComponent } from './otherUser/show-profile-of-other-user/show-profile-of-other-user.component';
 import { ShowAllPostsComponent } from './Post_Components/show-all-posts/show-all-posts.component';
 import { AddPostComponent } from './Post_Components/add-post/add-post.component';
@@ -24,14 +26,16 @@ const routes1: Routes = [
   {path:'', component:HomeComponent, pathMatch: 'full'},
   {path:'home',component:HomeComponent,
    children:[{path:'',component:HomeComponent},
+             {path:'profile',component:ProfileComponent},
+             {path:'MyNetwork',component:MyNetworkComponent},
              {path:'chat',component:ChatComponent}]},
-  {path:'profile',component:ProfileComponent},
   {path:'Settings',component:SettingsComponent},
   {path:'UpdateProfile',component:UpdateProfileComponent},
   {path:'AccountPref',component:AccountPreferencesComponent},
   {path:'Addpost',component:AddPostComponent},
   {path:'ShowAllposts',component:ShowAllPostsComponent},
   {path:'ShowOtherUserProfile',component:ShowProfileOfOtherUserComponent},
+  {path:'ShowOtherUserPosts',component:ShowOtherAllPostsComponent},
 ];
 
 @NgModule({
