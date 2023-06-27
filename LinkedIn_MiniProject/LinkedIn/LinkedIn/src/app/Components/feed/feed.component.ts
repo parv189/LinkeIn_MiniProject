@@ -38,16 +38,16 @@ export class FeedComponent implements OnInit{
               this.userPosts.push(temp[i])
             }
             console.log(this.userPosts);
-          }
-        });
-        this.data.GetOwnPosts(this.id).subscribe({
-          next:(res)=>{
-            var temp = res;
-            for(let i=0; i<temp.length ; i++){
-              this.userPosts.push(temp[i])
-            }
-            this.userPosts.sort((a,b)=>b.post_Id-a.post_Id)
-            console.log(this.userPosts);
+            this.data.GetOwnPosts(this.id).subscribe({
+              next:(res)=>{
+                var temp = res;
+                for(let i=0; i<temp.length ; i++){
+                  this.userPosts.push(temp[i])
+                }
+                this.userPosts.sort((a,b)=>b.post_Id-a.post_Id)
+                console.log(this.userPosts);
+              }
+            });
           }
         });
         this.data.GetUserbyid(this.id).subscribe({
@@ -55,7 +55,7 @@ export class FeedComponent implements OnInit{
             this.UserData = res;
           }
         });
-        
+
       }
     })
   }

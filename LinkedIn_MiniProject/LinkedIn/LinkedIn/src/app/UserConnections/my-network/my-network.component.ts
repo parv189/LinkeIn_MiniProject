@@ -22,18 +22,19 @@ faCircleCheck=faCircleCheck;
   }
 
   loaddata(){
+    this.data.GetInvitations(this.id).subscribe({
+      next:(res)=>{
+        this.Invitations = res;
+        this.Invitations.sort((a,b)=>b.userConnection_Id - a.userConnection_Id)
+        console.log(res);
+      }
+    })
     this.data.GetConnectionsById(this.id).subscribe({
       next:(res)=>{
         this.AllConnections = res;
         console.log(res);
       }
     });
-    this.data.GetInvitations(this.id).subscribe({
-      next:(res)=>{
-        this.Invitations = res;
-        console.log(res);
-      }
-    })
   };
   onReject(connid:number){
     // this.Rejected = this.Invitations.filter(x => x.userConnection_Id == userConnection_Id);
