@@ -92,6 +92,49 @@ namespace MiniProject_LinkedIn.Migrations
                     b.ToTable("Company");
                 });
 
+            modelBuilder.Entity("MiniProject_LinkedIn.Models.Connection_sPost", b =>
+                {
+                    b.Property<int>("Post_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Post_Id"));
+
+                    b.Property<int?>("ConnectedUser_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedByDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo_Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserConnection_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("User_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User_Profile_photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Post_Id");
+
+                    b.ToTable("Connection_sPosts");
+                });
+
             modelBuilder.Entity("MiniProject_LinkedIn.Models.Experience", b =>
                 {
                     b.Property<int>("Exp_Id")

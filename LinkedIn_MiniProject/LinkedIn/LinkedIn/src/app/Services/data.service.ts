@@ -57,13 +57,30 @@ searchid:number=0;
   UpdateConnectionsByConnId(id:number,model:any){
     return this.http.put<any>('https://localhost:7050/api/Connections/UpdateConnections/'+id,model)
   }
-  AddInvitation(uid:number,ouid:number){
-    return this.http.post<any>('https://localhost:7050/api/Connections/'+uid,ouid)
+  DeleteConnection(id:number){
+    return this.http.delete<any>('https://localhost:7050/api/Connections/'+id)
+  }
+  AddInvitation(id:number|null,model:any){
+    return this.http.post<any>('https://localhost:7050/api/Connections/addconnection/'+id,model)
   }
   GetInvitations(id:number|null){
     return this.http.get<any>('https://localhost:7050/api/Invitations/'+id)
   }
-
+  GetConnectionsPost1(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetPosts1/'+id)
+  }
+  GetConnectionsPost2(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetPosts2/'+id)
+  }
+  GetOwnPosts(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetOwnPosts/'+id)
+  }
+  GetPostLikes(id:number){
+    return this.http.get<any>('https://localhost:7050/api/PostLikes/'+id)
+  }
+  AddPostLikes(id:number,user:any){
+    return this.http.get<any>('https://localhost:7050/api/PostLikes/'+id,user)
+  }
 
 
     getsearchid(id:number){

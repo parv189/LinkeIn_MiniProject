@@ -1,3 +1,5 @@
+import { FeedComponent } from './Components/feed/feed.component';
+import { ManageMyNetworkComponent } from './UserConnections/manage-my-network/manage-my-network.component';
 import { MyNetworkComponent } from './UserConnections/my-network/my-network.component';
 import { ShowOtherAllPostsComponent } from './otherUser/show-other-all-posts/show-other-all-posts.component';
 import { ShowProfileOfOtherUserComponent } from './otherUser/show-profile-of-other-user/show-profile-of-other-user.component';
@@ -18,16 +20,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path:'', component:SignUpComponent, pathMatch: 'full'},
   {path:'home',component:HomeComponent},
-  {path:'',component:SignUpComponent},
   {path:'SignUp',component:SignUpComponent},
   {path:'SignIn',component:SignInComponent},
 ];
 const routes1: Routes = [
-  {path:'', component:HomeComponent, pathMatch: 'full'},
   {path:'home',component:HomeComponent,
-   children:[{path:'',component:HomeComponent},
+   children:[{path:'',component:FeedComponent},
              {path:'profile',component:ProfileComponent},
              {path:'MyNetwork',component:MyNetworkComponent},
+             {path:'feed',component:FeedComponent},
              {path:'chat',component:ChatComponent}]},
   {path:'Settings',component:SettingsComponent},
   {path:'UpdateProfile',component:UpdateProfileComponent},
@@ -36,6 +37,7 @@ const routes1: Routes = [
   {path:'ShowAllposts',component:ShowAllPostsComponent},
   {path:'ShowOtherUserProfile',component:ShowProfileOfOtherUserComponent},
   {path:'ShowOtherUserPosts',component:ShowOtherAllPostsComponent},
+  {path:'ManageMyNetwork',component:ManageMyNetworkComponent},
 ];
 
 @NgModule({

@@ -34,12 +34,12 @@ namespace MiniProject_LinkedIn.Controllers
             return conn;
         }
         [EnableCors("Policy1")]
-        [HttpPost("{uid},{ouid}")]
-        public ActionResult<UserConnections> newConnection(int uid,int ouid)
+        [HttpPost("addconnection/{id}")]
+        public ActionResult<UserConnections> newConnection(int id,User_Information req)
         {
             UserConnections uc = new UserConnections();
-            uc.User_ID = uid;
-            uc.ConnectedUser_ID = ouid;
+            uc.User_ID = id;
+            uc.ConnectedUser_ID = req.User_ID;
             uc.status = "pending";
             var conn = connection.Add(uc);
             uc.CreatedById = uc.User_ID;
@@ -73,6 +73,29 @@ namespace MiniProject_LinkedIn.Controllers
             }
 
         }
+        [EnableCors("Policy1")]
+        [HttpDelete("{id}")]
+        public ActionResult<UserConnections> DeleteConnection(int id)
+        {
+            try
+            {
+                if (!ConnectionExists(id))
+                {
+                    return NotFound();
+                }
+                var c = connection.Find(x => x.UserConnection_Id == id).FirstOrDefault();
+                var deleteconnection = connection.Delete(c);
+                return deleteconnection;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
 
+        private bool ConnectionExists(int id)
+        {
+            return connection.IsExist(x => x.UserConnection_Id == id);
+        }
     }
 }

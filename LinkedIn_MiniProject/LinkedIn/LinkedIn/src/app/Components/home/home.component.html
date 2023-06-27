@@ -19,7 +19,7 @@
     </div>
     <div class="text-center d-flex">
       <div class="mx-3">
-        <a class="icon" [routerLink]="['/home']" routerLinkActive="active"
+        <a class="icon" [routerLink]="['/home/feed']" routerLinkActive="active"
           [routerLinkActiveOptions]={exact:true}><fa-icon class="fs-6" [icon]="faHouse"></fa-icon><span class="d-block"
             style="font-size:smaller;">Home</span></a>
       </div>
@@ -52,7 +52,7 @@
     <div>
     </div>
   </div>
-  <div style="background-color: #eee;overflow: auto;">
+  <div style="background-color: #666666">
     <div (click)="onAddPost()" class="d-flex align-items-center justify-content-center post fixedpost">
       <div class="text-center">
         <fa-icon class="fs-5" [icon]="faPlus"></fa-icon>

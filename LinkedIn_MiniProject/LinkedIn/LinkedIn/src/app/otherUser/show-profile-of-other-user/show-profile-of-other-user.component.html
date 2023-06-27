@@ -51,8 +51,11 @@
                   </div>
                 </div>
               </ng-container>
-              <div>
-                <button class="btn btn-primary"(click)="onConnect()">Connect</button>
+              <div *ngIf="status=='pending'">
+                <button class="btn btn-secondary ms-4"(click)="onConnect()">Pending</button>
+              </div>
+              <div *ngIf="status=='None'">
+                <button class="btn btn-primary ms-4"(click)="onConnect()">Connect</button>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using System.Text.Json.Serialization;
 
 namespace MiniProject_LinkedIn.Models
 {
@@ -24,8 +24,14 @@ namespace MiniProject_LinkedIn.Models
             public DbSet<ParentObject>ParentObjects { get; set; }
             public DbSet<ObjectType> ObjectTypes { get; set; }
             public DbSet<View1> view1 { get; set; }
-            public DbSet<Locations> Locations { get; set; }
-            public DbSet<Invitations> Invitations { get; set; }
+            [JsonIgnore]
+        public DbSet<Locations> Locations { get; set; }
+            [JsonIgnore]
+        public DbSet<Invitations> Invitations { get; set; }
+            [JsonIgnore]             
+            public DbSet<Connection_sPost> Connection_sPosts { get; set; }
+        [JsonIgnore]
+        public DbSet<OwnPosts> OwnPosts { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             optionbuilder.UseSqlServer("Server=PC0404\\MSSQL2019;Database=LinkedInDB;Trusted_Connection=True;" +

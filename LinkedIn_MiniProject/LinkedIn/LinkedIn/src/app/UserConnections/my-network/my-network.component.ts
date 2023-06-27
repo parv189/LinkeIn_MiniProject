@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { Component,OnInit } from '@angular/core';
 import { faCircleXmark, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { DataService } from 'src/app/Services/data.service';
+
 @Component({
   selector: 'app-my-network',
   templateUrl: './my-network.component.html',
@@ -11,9 +13,10 @@ id:number|null = Number(localStorage.getItem('User_Id'));
 AllConnections:Array<any>=[];
 Invitations:Array<any>=[];
 Accepted:Array<any>=[];
+Rejected:Array<any>=[];
 faCircleXmark=faCircleXmark;
 faCircleCheck=faCircleCheck;
-  constructor(private data:DataService){}
+  constructor(private data:DataService, private router:Router){}
   ngOnInit(): void {
     this.loaddata();
   }
@@ -23,25 +26,24 @@ faCircleCheck=faCircleCheck;
       next:(res)=>{
         this.AllConnections = res;
         console.log(res);
-
       }
     });
     this.data.GetInvitations(this.id).subscribe({
       next:(res)=>{
         this.Invitations = res;
         console.log(res);
-
       }
     })
   };
   onReject(connid:number){
-    var connection = this.Invitations.find(x => x.UserConnection_Id == connid);
-    connection.status = "rejected"
-    this.data.UpdateConnectionsByConnId(connid,connection).subscribe({
+    // this.Rejected = this.Invitations.filter(x => x.userConnection_Id == userConnection_Id);
+    // var connid = this.Rejected[0].userConnection_Id
+    // this.Rejected[0].status = "rejected"
+    this.data.DeleteConnection(connid).subscribe({
       next:(res)=>{
         console.log(res);
       }
-    });
+    })
   }
   onAccept(connid:number){
     console.log(connid);
@@ -54,5 +56,8 @@ faCircleCheck=faCircleCheck;
         console.log(res);
       }
     });
+  }
+  onManageNet(){
+    this.router.navigate(['/ManageMyNetwork'])
   }
 }

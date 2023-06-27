@@ -1,7 +1,12 @@
-<section class="vh-100 " style="background-color: #eee;">
-  <div class="container h-100">
+<section class="vh-100 " style="background-color:#f3f2ef;">
+  <div class="container h-100"style="background-color:#f3f2ef;">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-sm-4; col-md-8 col-lg-6 col-xl-6" style="margin-top: 60px;">
+        <div class="card mb-2 mt-1" style="max-width: 640px;">
+          <div class="card-body">
+            <h5 class="card-title" style="color: rgb(72, 59, 185);" (click)="onManageNet()">Manage Network</h5>
+          </div>
+        </div>
         <ng-container *ngFor="let item of Invitations">
           <div *ngIf="item.status=='pending'" class="card" style="max-width: 640px;">
             <div class="row g-0" style="height: 9rem;">

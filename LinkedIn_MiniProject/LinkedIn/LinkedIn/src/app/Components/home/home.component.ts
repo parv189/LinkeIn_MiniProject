@@ -11,12 +11,15 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 })
 export class HomeComponent implements OnInit{
 userData:any;
-Email:string|null = localStorage.getItem("Email")
+Email:string|null = localStorage.getItem("Email");
+id:number|null = Number(localStorage.getItem("User_Id"));
+
   searchTerm = '';
   userdata1:Array<any> = [];
   userdata2:Array<any> = [];
   userdata:Array<any> = [];
   alluserdata:Array<any> = [];
+
   faPlus=faPlus;
   faUserGroup=faUserGroup;
   faHouse=faHouse;
@@ -25,6 +28,7 @@ Email:string|null = localStorage.getItem("Email")
   faBell=faBell;
   faLinkedin=faLinkedin;
   faMagnifyingGlass=faMagnifyingGlass;
+
 
 constructor(private data:DataService, private router:Router){}
   ngOnInit(): void {
@@ -35,10 +39,18 @@ loaddata(){
     next:(res)=>{
       this.userData = res
       console.log(this.userData);
-
     }
   });
-
+  // this.data.GetPostsofuser(this.id).subscribe({
+  //   next:(res)=>{
+  //     this.userPosts.push(res);
+  //   }
+  // });
+  // this.data.GetConnectionsPost2(this.id).subscribe({
+  //   next:(res)=>{
+  //     this.userPosts.push(res);
+  //   }
+  // })
 }
 onAddPost(){
 this.router.navigate(['/Addpost'])
@@ -62,6 +74,7 @@ this.data.GetAllUser2().subscribe({
 onSearch(id:number){
   console.log("id in home",id);
   this.data.getsearchid(id);
+  localStorage.setItem('SearchId',id.toString())
   console.log(this.data.searchid);
   this.router.navigate(['/ShowOtherUserProfile'])
 }

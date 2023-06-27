@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ShowOtherAllPostsComponent implements OnInit{
   searchid:number=0;
+  SearchId:number|null= Number(localStorage.getItem('SearchId'));
 userPosts:Array<any> = [];
 userData:any;
 faHeart = faHeart;
@@ -25,12 +26,12 @@ constructor(private data:DataService, private router:Router){}
     this.loaddata();
   }
   loaddata(){
-    this.data.GetPostsofuser(this.searchid).subscribe({
+    this.data.GetPostsofuser(this.SearchId).subscribe({
       next:(res)=>{
         this.userPosts = res.reverse();
       }
     });
-    this.data.GetUserbyid(this.searchid).subscribe({
+    this.data.GetUserbyid(this.SearchId).subscribe({
       next:(res)=>{
         console.log(res);
 

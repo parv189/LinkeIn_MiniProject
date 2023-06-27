@@ -21,6 +21,8 @@ import { SearchFilterPipe } from './Pipes/search-filter.pipe';
 import { ShowProfileOfOtherUserComponent } from './otherUser/show-profile-of-other-user/show-profile-of-other-user.component';
 import { ShowOtherAllPostsComponent } from './otherUser/show-other-all-posts/show-other-all-posts.component';
 import { MyNetworkComponent } from './UserConnections/my-network/my-network.component';
+import { ManageMyNetworkComponent } from './UserConnections/manage-my-network/manage-my-network.component';
+import { FeedComponent } from './Components/feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { MyNetworkComponent } from './UserConnections/my-network/my-network.comp
     SearchFilterPipe,
     ShowProfileOfOtherUserComponent,
     ShowOtherAllPostsComponent,
-    MyNetworkComponent
+    MyNetworkComponent,
+    ManageMyNetworkComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

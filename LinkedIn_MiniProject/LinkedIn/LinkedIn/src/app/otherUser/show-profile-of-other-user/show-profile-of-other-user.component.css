@@ -7,3 +7,25 @@
   color:rgb(75, 74, 74);
   border-radius: 5px;
 }
+.pending
+{
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(209, 205, 205);
+  color: rgb(0, 0, 0);
+  padding: 4px 12px;
+  border-radius: 5px;
+  border-style: hidden;
+}
+.None
+{
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(26, 122, 212);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 5px;
+  border-style: hidden;
+}
