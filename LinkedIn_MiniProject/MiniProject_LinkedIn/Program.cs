@@ -22,6 +22,7 @@ builder.Services.AddTransient<IConnectionRepo, UserConnectionRepository>();
 builder.Services.AddTransient<IObjectType, ObjectTypeRepository>();
 builder.Services.AddTransient<IObjects, ObjectRepository>();
 builder.Services.AddTransient<IUserPost, UserPostRepository>();
+builder.Services.AddTransient<IPostLikes, PostlikesRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Policy1",

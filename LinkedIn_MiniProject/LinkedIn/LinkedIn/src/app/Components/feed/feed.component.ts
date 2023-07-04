@@ -19,6 +19,9 @@ export class FeedComponent implements OnInit{
   status1:Boolean=false;
   status2:Boolean=false;
   userPosts:Array<any> = [];
+  postlikescount:Array<any> = [];
+  postlikes:Array<any> = [];
+  userlikedPosts:Array<any> = [];
   faRepeat=faRepeat;
   faThumbsUp=faThumbsUp;
   faComments=faComments;
@@ -46,6 +49,23 @@ export class FeedComponent implements OnInit{
                 }
                 this.userPosts.sort((a,b)=>b.post_Id-a.post_Id)
                 console.log(this.userPosts);
+                // for(let i=0 ; i<this.userPosts.length; i++){
+                //   this.data.GetPostLikes(this.userPosts[i].post_Id).subscribe({
+                //     next:(res)=>{
+                //       var temp = res
+                //       if(temp.length != 0){
+                //         this.postlikes.push(temp)
+                //       }
+                //       var templikes = res.length
+                //       this.postlikescount.push(templikes)
+                //     }
+                //   });
+                // }
+                // console.log("postlikes",this.postlikes);
+                // console.log("postlikescount",this.postlikescount);
+
+                // this.userlikedPosts = this.postlikes.filter(x=>x.user_Id == this.id)
+                // console.log("userlikedPosts",this.userlikedPosts);
               }
             });
           }
@@ -65,8 +85,17 @@ export class FeedComponent implements OnInit{
         console.log(res);
       }
     });
-    this.status1 = !this.status1
-
+    // for(let i=0 ; i<this.userPosts.length; i++){
+    //   this.data.GetPostLikes(this.userPosts[i].post_Id).subscribe({
+    //     next:(res)=>{
+    //       this.postlikes = res
+    //       var templikes = res.length
+    //       this.postlikescount.push(templikes)
+    //     }
+    //   });
+    // }
+    // this.userlikedPosts = this.postlikes.filter(x=>x.user_ID == this.id)
+    // console.log("userlikedPosts",this.userlikedPosts);
   }
   ondisLike(){
     this.status1 = !this.status1

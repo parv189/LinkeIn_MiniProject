@@ -115,6 +115,9 @@ namespace MiniProject_LinkedIn.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("LikeCounts")
+                        .HasColumnType("int");
+
                     b.Property<string>("Photo_Url")
                         .HasColumnType("nvarchar(max)");
 
@@ -345,6 +348,40 @@ namespace MiniProject_LinkedIn.Migrations
                     b.HasIndex("ObjectType_Id");
 
                     b.ToTable("Objects");
+                });
+
+            modelBuilder.Entity("MiniProject_LinkedIn.Models.OwnPosts", b =>
+                {
+                    b.Property<int>("Post_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Post_Id"));
+
+                    b.Property<DateTime?>("CreatedByDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo_Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("User_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User_Profile_photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Post_Id");
+
+                    b.ToTable("OwnPosts");
                 });
 
             modelBuilder.Entity("MiniProject_LinkedIn.Models.ParentObject", b =>

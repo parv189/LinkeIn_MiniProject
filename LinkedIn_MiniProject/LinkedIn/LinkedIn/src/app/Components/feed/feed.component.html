@@ -1,6 +1,6 @@
 <div class="container-fluid mx-0 posts">
   <div class="row">
-    <div class="col col-md-12 d-flex justify-content-center" *ngFor="let post of userPosts">
+    <div class="col col-md-12 d-flex justify-content-center" *ngFor="let post of userPosts;let i = index">
       <div class="card border border-0 mt-2" style="width: 35rem;">
         <div class="d-flex align-items-center">
           <div><img class="border border-secondary border-1 m-1" [src]="post.user_Profile_photo" alt="Profile" style="height: 50px; width: 50px; border-radius: 100%;"></div>
@@ -10,7 +10,7 @@
         <div class="card-body">
           <p class="card-text h5">{{post.content}}</p><hr>
           <div class="d-flex justify-content-between">
-              <p class="m-0 p-0" style="color: rgb(94, 96, 99);">0 likes</p>
+              <p class="m-0 p-0" style="color: rgb(94, 96, 99);">{{post.likeCounts}} Likes</p>
               <p  class="m-0 p-0" style="color: rgb(94, 96, 99);">0 comments</p>
           </div><hr>
           <div class="d-flex justify-content-around text-center mt-3">

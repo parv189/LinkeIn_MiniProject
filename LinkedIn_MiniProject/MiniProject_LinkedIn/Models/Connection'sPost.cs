@@ -16,5 +16,6 @@ namespace MiniProject_LinkedIn.Models
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? User_Profile_photo { get; set; }
+        public int ? LikeCounts { get; set; }
     }
 }
