@@ -31,7 +31,11 @@ namespace MiniProject_LinkedIn.Models
             [JsonIgnore]             
             public DbSet<Connection_sPost> Connection_sPosts { get; set; }
         [JsonIgnore]
+        public DbSet<CheckPostLike> CheckPostLikes { get; set; }
+        [JsonIgnore]
         public DbSet<OwnPosts> OwnPosts { get; set; }
+        [JsonIgnore]
+        public DbSet<CheckOwnPostLike> CheckOwnPostLikes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             optionbuilder.UseSqlServer("Server=PC0404\\MSSQL2019;Database=LinkedInDB;Trusted_Connection=True;" +

@@ -5,3 +5,11 @@ where uc.ConnectedUser_ID = @id
 go
 
 exec usp_Invinations @id=14
+
+go
+create or alter procedure usp_MyNetwork @id int
+as
+select * from UserConnections uc join UserInformation ui on uc.User_ID = ui.User_ID
+where uc.ConnectedUser_ID = @id
+
+exec usp_MyNetwork @id=24

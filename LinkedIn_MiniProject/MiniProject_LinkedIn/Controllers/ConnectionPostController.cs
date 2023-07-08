@@ -57,5 +57,47 @@ namespace MiniProject_LinkedIn.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [EnableCors("Policy1")]
+        [HttpGet("GetLikes1/{id1}")]
+        public async Task<IActionResult> GetLikes1(int id1)
+        {
+            try
+            {
+                var Likes = _context.CheckPostLikes.FromSqlRaw($"exec usp_CheckLike1 @id={id1}");
+                return Ok(Likes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [EnableCors("Policy1")]
+        [HttpGet("GetLikes2/{id2}")]
+        public async Task<IActionResult> GetLikes2(int id2)
+        {
+            try
+            {
+                var Likes = _context.CheckPostLikes.FromSqlRaw($"exec usp_CheckLike2 @id={id2}");
+                return Ok(Likes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [EnableCors("Policy1")]
+        [HttpGet("CheckOwnPostLike/{id}")]
+        public async Task<IActionResult> CheckOwnPostLike(int id)
+        {
+            try
+            {
+                var Likes = _context.CheckOwnPostLikes.FromSqlRaw($"exec usp_CheckLike @id={id}");
+                return Ok(Likes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

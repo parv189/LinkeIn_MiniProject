@@ -121,6 +121,9 @@ namespace MiniProject_LinkedIn.Migrations
                     b.Property<string>("Photo_Url")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int?>("UserConnection_Id")
                         .HasColumnType("int");
 
@@ -367,8 +370,14 @@ namespace MiniProject_LinkedIn.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("LikeCounts")
+                        .HasColumnType("int");
+
                     b.Property<string>("Photo_Url")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<int?>("User_ID")
                         .HasColumnType("int");

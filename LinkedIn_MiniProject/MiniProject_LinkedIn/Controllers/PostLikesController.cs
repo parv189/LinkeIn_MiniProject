@@ -26,6 +26,7 @@ namespace MiniProject_LinkedIn.Controllers
             var newlike = postlike.Add(pl);
             return newlike;
         }
+       
         [EnableCors("Policy1")]
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<PostLikes>> GetLikes(int id)
@@ -36,6 +37,29 @@ namespace MiniProject_LinkedIn.Controllers
                 return NotFound();
             }
             return postLikes;
+        }
+        [EnableCors("Policy1")]
+        [HttpDelete("{id}")]
+        public ActionResult<PostLikes> DeleteLike(int id)
+        {
+            try
+            {
+                if (!PostlikeExists(id))
+                {
+                    return NotFound();
+                }
+                var c = postlike.Find(x => x.PostLike_Id == id).FirstOrDefault();
+                var deleteconnection = postlike.Delete(c);
+                return deleteconnection;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+        private bool PostlikeExists(int id)
+        {
+            return postlike.IsExist(x => x.PostLike_Id == id);
         }
     }
 }

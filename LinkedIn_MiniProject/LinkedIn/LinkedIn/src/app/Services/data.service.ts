@@ -75,12 +75,28 @@ searchid:number=0;
   GetOwnPosts(id:number|null){
     return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetOwnPosts/'+id)
   }
+  GetCheckLike1(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes1/'+id)
+  }
+  GetCheckLike2(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes2/'+id)
+  }
+  GetCheckOwnPostLike(id:number|null){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/CheckOwnPostLike/'+id)
+  }
   GetPostLikes(id:number){
     return this.http.get<any>('https://localhost:7050/api/PostLikes/'+id)
   }
+
   AddPostLikes(id:number,user:any){
-    return this.http.get<any>('https://localhost:7050/api/PostLikes/'+id,user)
+    return this.http.post<any>('https://localhost:7050/api/PostLikes/'+id,user)
   }
+  DeletePostLikes(id:number){
+    return this.http.delete<any>('https://localhost:7050/api/PostLikes/'+id)
+  }
+
+
+
 
 
     getsearchid(id:number){
