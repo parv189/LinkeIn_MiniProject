@@ -44,7 +44,7 @@
       </div>
       <div class="mx-3">
         <a class="icon" [routerLink]="['/home/profile']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
-          <img [src]="userData.user_Profile_photo" alt="Profile"
+          <img src="{{userData.user_Profile_photo}}" alt="Profile"
             style="height: 22px ; width:22px; border-radius: 100%;">
           <span class="d-block" style="font-size:smaller;">Me</span></a>
       </div>

@@ -31,7 +31,7 @@ namespace MiniProject_LinkedIn.Models
             [JsonIgnore]             
             public DbSet<Connection_sPost> Connection_sPosts { get; set; }
         [JsonIgnore]
-        public DbSet<CheckPostLike> CheckPostLikes { get; set; }
+        public DbSet<CountPostLike> CountPostLikes { get; set; }
         [JsonIgnore]
         public DbSet<OwnPosts> OwnPosts { get; set; }
         [JsonIgnore]

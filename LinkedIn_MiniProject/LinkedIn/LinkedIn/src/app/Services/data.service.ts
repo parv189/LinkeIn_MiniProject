@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ownposts, posts } from '../Models/PostLikes.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -66,28 +67,30 @@ searchid:number=0;
   GetInvitations(id:number|null){
     return this.http.get<any>('https://localhost:7050/api/Invitations/'+id)
   }
-  GetConnectionsPost1(id:number|null){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetPosts1/'+id)
+  GetConnectionsPost1(id:number):Observable<Array<posts>>{
+    return this.http.get<Array<posts>>('https://localhost:7050/api/ConnectionPost/GetPosts1/'+id)
   }
-  GetConnectionsPost2(id:number|null){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetPosts2/'+id)
+  GetConnectionsPost2(id:number):Observable<Array<posts>>{
+    return this.http.get<Array<posts>>('https://localhost:7050/api/ConnectionPost/GetPosts2/'+id)
   }
-  GetOwnPosts(id:number|null){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetOwnPosts/'+id)
+  GetOwnPosts(id:number):Observable<Array<ownposts>>{
+    return this.http.get<Array<ownposts>>('https://localhost:7050/api/ConnectionPost/GetOwnPosts/'+id)
   }
-  GetCheckLike1(id:number|null){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes1/'+id)
-  }
-  GetCheckLike2(id:number|null){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes2/'+id)
-  }
+  // GetCheckLike1(id:number|null){
+  //   return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes1/'+id)
+  // }
+  // GetCheckLike2(id:number|null){
+  //   return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes2/'+id)
+  // }
   GetCheckOwnPostLike(id:number|null){
     return this.http.get<any>('https://localhost:7050/api/ConnectionPost/CheckOwnPostLike/'+id)
+  }
+  GetLikesCount(id:number){
+    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikeCounts/'+id)
   }
   GetPostLikes(id:number){
     return this.http.get<any>('https://localhost:7050/api/PostLikes/'+id)
   }
-
   AddPostLikes(id:number,user:any){
     return this.http.post<any>('https://localhost:7050/api/PostLikes/'+id,user)
   }
