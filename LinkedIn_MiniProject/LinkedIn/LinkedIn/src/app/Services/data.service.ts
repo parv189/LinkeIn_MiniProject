@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ownposts, posts } from '../Models/PostLikes.model';
+import { user, ownposts, posts, like } from '../Models/PostLikes.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -67,35 +67,36 @@ searchid:number=0;
   GetInvitations(id:number|null){
     return this.http.get<any>('https://localhost:7050/api/Invitations/'+id)
   }
-  GetConnectionsPost1(id:number):Observable<Array<posts>>{
-    return this.http.get<Array<posts>>('https://localhost:7050/api/ConnectionPost/GetPosts1/'+id)
+  GetConnectionsPost(id:number):Observable<Array<posts>>{
+    return this.http.get<Array<posts>>('https://localhost:7050/api/ConnectionPost/GetPosts/'+id)
   }
-  GetConnectionsPost2(id:number):Observable<Array<posts>>{
-    return this.http.get<Array<posts>>('https://localhost:7050/api/ConnectionPost/GetPosts2/'+id)
-  }
-  GetOwnPosts(id:number):Observable<Array<ownposts>>{
-    return this.http.get<Array<ownposts>>('https://localhost:7050/api/ConnectionPost/GetOwnPosts/'+id)
-  }
+  // GetConnectionsPost2(id:number):Observable<Array<posts>>{
+  //   return this.http.get<Array<posts>>('https://localhost:7050/api/ConnectionPost/GetPosts2/'+id)
+  // }
+  // GetOwnPosts(id:number):Observable<Array<ownposts>>{
+  //   return this.http.get<Array<ownposts>>('https://localhost:7050/api/ConnectionPost/GetOwnPosts/'+id)
+  // }
   // GetCheckLike1(id:number|null){
   //   return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes1/'+id)
   // }
   // GetCheckLike2(id:number|null){
   //   return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikes2/'+id)
   // }
-  GetCheckOwnPostLike(id:number|null){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/CheckOwnPostLike/'+id)
-  }
-  GetLikesCount(id:number){
-    return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikeCounts/'+id)
-  }
+  // GetCheckOwnPostLike(id:number|null){
+  //   return this.http.get<any>('https://localhost:7050/api/ConnectionPost/CheckOwnPostLike/'+id)
+  // }
+  // GetLikesCount(id:number){
+  //   return this.http.get<any>('https://localhost:7050/api/ConnectionPost/GetLikeCounts/'+id)
+  // }
   GetPostLikes(id:number){
     return this.http.get<any>('https://localhost:7050/api/PostLikes/'+id)
   }
-  AddPostLikes(id:number,user:any){
-    return this.http.post<any>('https://localhost:7050/api/PostLikes/'+id,user)
+  AddPostLikes(id:number,user:user):Observable<like>{
+    return this.http.post<like>('https://localhost:7050/api/PostLikes/'+id,user)
+
   }
-  DeletePostLikes(id:number){
-    return this.http.delete<any>('https://localhost:7050/api/PostLikes/'+id)
+  DeletePostLikes(id:number):Observable<like>{
+    return this.http.delete<like>('https://localhost:7050/api/PostLikes/'+id)
   }
 
 

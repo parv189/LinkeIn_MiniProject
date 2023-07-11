@@ -1,17 +1,5 @@
 import { checklike } from './../../Models/PostLikes.model';
-import { Observable } from 'rxjs';
-import {
-  selectAllPosts,
-  selectchecklike,
-  selectposts1,
-  selectposts2,
-} from './../../Store/selecter';
-import {
-  GetOwnPosts,
-  GetPosts1,
-  GetPosts2,
-  GetCheckLike,
-} from './../../Store/action';
+import { AddPostLike, DeletePostLike, GetPosts, GetPostsSuccess } from './../../Store/action';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Services/data.service';
 import { Router } from '@angular/router';
@@ -27,6 +15,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { posts } from 'src/app/Models/PostLikes.model';
+import { selectposts } from 'src/app/Store/selecter';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -46,9 +35,9 @@ export class FeedComponent implements OnInit {
   status1: Boolean = false;
   status2: Boolean = false;
   userPosts: Array<posts> = [];
-  checkLikes: Array<checklike> = [];
-  postCounts: Array<any> = [];
-  Combine: Array<any> = [];
+  // checkLikes: Array<checklike> = [];
+  // postCounts: Array<any> = [];
+  // Combine: Array<any> = [];
   //postlikescount:Array<any> = [];
   //postlikes:Array<any> = [];
   //userlikedPosts:Array<any> = [];
@@ -60,23 +49,34 @@ export class FeedComponent implements OnInit {
   SolidC = SolidC;
 
   loaddata() {
-    this.store.dispatch(GetPosts1());
-    this.store.dispatch(GetPosts2());
-    this.store.dispatch(GetOwnPosts());
-    this.store.dispatch(GetCheckLike());
-    this.store.select(selectAllPosts).subscribe({
+    this.store.dispatch(GetPosts());
+    this.store.select(selectposts).subscribe({
+      next:(res)=>{
+        this.userPosts =res
+
+      }
+    })
+    this.data.GetUserbyid(this.id).subscribe({
       next: (res) => {
-        this.userPosts = res;
-        this.userPosts.sort((a, b) => b.post_Id - a.post_Id);
-        console.log("post",this.userPosts);
+        this.UserData = res;
       },
     });
-    this.store.select(selectchecklike).subscribe({
-      next: (res) => {
-        this.checkLikes = res;
-        console.log("check",this.checkLikes);
-      },
-    });
+    // this.store.dispatch(GetPosts2());
+    // this.store.dispatch(GetOwnPosts());
+    // this.store.dispatch(GetCheckLike());
+    // this.store.select(selectAllPosts).subscribe({
+    //   next: (res) => {
+    //     this.userPosts = res;
+    //     this.userPosts.sort((a, b) => b.post_Id - a.post_Id);
+    //     console.log("post",this.userPosts);
+    //   },
+    // });
+    // this.store.select(selectchecklike).subscribe({
+    //   next: (res) => {
+    //     this.checkLikes = res;
+    //     console.log("check",this.checkLikes);
+    //   },
+    // });
     // for (let i = 0; i < this.userPosts.length; i++) {
     //   for (let j = 0; j < this.checkLikes.length; j++) {
     //     if (this.userPosts[i].post_Id == this.checkLikes[j].post_Id) {
@@ -86,7 +86,7 @@ export class FeedComponent implements OnInit {
     //     }
     //   }
     // }
-    console.log("sdfgsdf");
+    // console.log("sdfgsdf");
 
 
 
@@ -143,11 +143,6 @@ export class FeedComponent implements OnInit {
     //         });
     //       },
     //     });
-    //     this.data.GetUserbyid(this.id).subscribe({
-    //       next: (res) => {
-    //         this.UserData = res;
-    //       },
-    //     });
     //   },
     // });
     // ===========================================================================================================
@@ -180,21 +175,43 @@ export class FeedComponent implements OnInit {
     //   }
     // })
   }
-  onLike(postid: number, status: string) {
-    if (status.substring(0, 5) == 'Liked') {
-      this.data.DeletePostLikes(Number(status.substring(6))).subscribe({
-        next: (res) => {
-          window.location.reload();
-        },
-      });
-    } else {
-      this.data.AddPostLikes(postid, this.UserData).subscribe({
-        next: (res) => {
-          console.log(res);
-          window.location.reload();
-        },
-      });
+  // onLike(postid: number, status: string) {
+  //   if (status.substring(0, 5) == 'Liked') {
+  //     this.data.DeletePostLikes(Number(status.substring(6))).subscribe({
+  //       next: (res) => {
+  //         window.location.reload();
+  //       },
+  //     });
+  //   } else {
+  //     this.data.AddPostLikes(postid, this.UserData).subscribe({
+  //       next: (res) => {
+  //         console.log(res);
+  //         window.location.reload();
+  //       },
+  //     });
+  //   }
+  onLike(postid: number, status: string){
+    if (status.substring(0, 5) == 'Liked'){
+      this.store.dispatch(DeletePostLike({id:Number(status.substring(6))}))
+    //   this.store.dispatch(GetPosts());
+    // this.store.select(selectposts).subscribe({
+    //   next:(res)=>{
+    //     this.userPosts =res
+    //   }
+    // })
     }
+    else{
+      this.store.dispatch(AddPostLike({id:postid,user:this.UserData}))
+    //   this.store.dispatch(GetPosts());
+    // this.store.select(selectposts).subscribe({
+    //   next:(res)=>{
+    //     this.userPosts =res
+
+    //   }
+    // })
+    }
+  }
+
     // for(let i=0 ; i<this.userPosts.length; i++){
     //   this.data.GetPostLikes(this.userPosts[i].post_Id).subscribe({
     //     next:(res)=>{
@@ -206,7 +223,7 @@ export class FeedComponent implements OnInit {
     // }
     // this.userlikedPosts = this.postlikes.filter(x=>x.user_ID == this.id)
     // console.log("userlikedPosts",this.userlikedPosts);
-  }
+  //}
   // ondisLike(){
   //   this.status1 = !this.status1
   // }

@@ -12,7 +12,7 @@ group by uc.UserConnection_Id,uc.User_ID,uc.ConnectedUser_ID,up.Post_Id,up.Photo
 order by Post_Id desc
 go
 --@id = x, is logedin user id
-exec usp_GetConnectionsPost1 @id = 24
+exec usp_GetConnectionsPost1 @id = 27
 go
 
 --in this procedure "User_ID" has sent request to "ConnectedUser_ID" and "ConnectedUser_ID" has made a post and "Status" is used to check, is user has liked or not
@@ -47,7 +47,7 @@ group by uc.UserConnection_Id,uc.User_ID,uc.ConnectedUser_ID,up.Post_Id,up.Photo
 order by Post_Id desc
 go
 --@id = x, is logedin user id
-exec usp_GetConnectionsPost2 @id = 24
+exec usp_GetConnectionsPost2 @id = 27
 go
 
 
@@ -74,13 +74,14 @@ go
 go 
 create or alter procedure usp_GetOwnPosts @id int
 as
-select DISTINCT up.Post_Id, up.Photo_Url, up.content, up.CreatedByDate,ui.FirstName, ui.LastName, ui.User_Profile_photo, ui.User_ID, case when(1=1) then 0 end as LikeCounts,
+select DISTINCT case when(1=1) then 0 end as UserConnection_Id,case when(1=1) then 0 end as ConnectedUser_ID, up.Post_Id, up.Photo_Url,up.CreatedById, up.content, up.CreatedByDate,ui.FirstName, ui.LastName, ui.User_Profile_photo, ui.User_ID,
+case when(1=1) then 0 end as LikeCounts,
 case when(1=1) then 'notLiked' end as Status
 from User_Post up 
 join UserInformation ui on up.User_Id = ui.User_ID
 --left join PostLikes pl on pl.Post_Id = up.Post_Id
 where ui.User_ID = @id
-group by up.Post_Id,up.Photo_Url,up.content,up.CreatedByDate,ui.FirstName,ui.LastName,ui.User_Profile_photo,ui.User_ID,up.User_Id
+group by up.Post_Id,up.Photo_Url,up.content,up.CreatedByDate,ui.FirstName,ui.LastName,ui.User_Profile_photo,ui.User_ID,up.User_Id,up.CreatedById
 --@id = x, is logedin user id
 exec usp_GetOwnPosts @id = 27
 
@@ -104,7 +105,7 @@ exec usp_CheckLike @id = 27
 go
 create or alter procedure usp_PostLikeCount @id int
 as
-select pl.Post_Id,count(pl.Post_Id)as LikeCounts from User_Post up join PostLikes pl on up.Post_Id = pl.PostLike_Id
+select pl.Post_Id,count(pl.Post_Id)as LikeCounts from User_Post up join PostLikes pl on up.Post_Id = pl.Post_Id
 where pl.Post_Id = @id
 group by pl.Post_Id
-exec usp_PostLikeCount @id = 8
+exec usp_PostLikeCount @id = 10

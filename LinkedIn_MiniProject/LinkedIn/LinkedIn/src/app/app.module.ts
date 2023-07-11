@@ -26,7 +26,7 @@ import { FeedComponent } from './Components/feed/feed.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { GetCheckLikeReducer, GetOwnPostsReducer, GetPosts1Reducer, GetPosts2Reducer } from './Store/reducer';
+import { GetPosts1Reducer} from './Store/reducer';
 import { PostEffects } from './Store/effects';
 
 @NgModule({
@@ -57,7 +57,7 @@ import { PostEffects } from './Store/effects';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
-    StoreModule.forRoot({posts1:GetPosts1Reducer,posts2:GetPosts2Reducer,ownposts:GetOwnPostsReducer,checklike:GetCheckLikeReducer}, {}),
+    StoreModule.forRoot({posts:GetPosts1Reducer}, {}),
     EffectsModule.forRoot([PostEffects]),
     StoreDevtoolsModule.instrument({name:'linkedin'})
   ],
