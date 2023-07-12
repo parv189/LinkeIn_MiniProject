@@ -11,6 +11,7 @@ import { DataService } from 'src/app/Services/data.service';
 export class MyNetworkComponent implements OnInit{
 id:number|null = Number(localStorage.getItem('User_Id'));
 AllConnections:Array<any>=[];
+MyConnections:Array<any>=[];
 Invitations:Array<any>=[];
 Accepted:Array<any>=[];
 Rejected:Array<any>=[];
@@ -35,6 +36,14 @@ faCircleCheck=faCircleCheck;
         console.log(res);
       }
     });
+    this.data.GetMyNetwork(this.id).subscribe({
+      next:(res)=>{
+        this.MyConnections = res
+        this.MyConnections.sort((a,b)=>b.userConnection_Id-a.userConnection_Id)
+        console.log(this.MyConnections);
+
+      }
+    })
   };
   onReject(connid:number){
     // this.Rejected = this.Invitations.filter(x => x.userConnection_Id == userConnection_Id);
@@ -60,5 +69,12 @@ faCircleCheck=faCircleCheck;
   }
   onManageNet(){
     this.router.navigate(['/ManageMyNetwork'])
+  }
+  onViewProfile(conn:number){
+    localStorage.setItem('SearchId',conn.toString())
+    console.log(conn);
+
+    this.router.navigate(['/ShowOtherUserProfile'])
+
   }
 }

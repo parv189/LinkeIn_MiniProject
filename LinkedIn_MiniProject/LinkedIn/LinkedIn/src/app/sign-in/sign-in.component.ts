@@ -40,7 +40,7 @@ UserId:number = 0;
          localStorage.setItem('User_Id',_token.unique_name)
          console.log('Email: ' + _token.email);
          localStorage.setItem('Email',_token.email)
-         this.router.navigate(['/home'])
+         this.router.navigate(['/home/feed'])
 
       },
       error: (err) => {

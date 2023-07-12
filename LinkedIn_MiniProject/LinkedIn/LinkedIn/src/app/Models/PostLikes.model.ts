@@ -56,11 +56,11 @@ export interface user{
   modifiedByDate: string
 }
 export interface like{
-  PostLike_Id:number
-  User_Id : number
-  Post_Id : number
-  CreatedById : number
-  CreatedByDate : string
-  ModifiedById : number
-  ModifiedByDate : string
+  postLike_Id:number
+  user_Id : number
+  post_Id : number
+  createdById : number
+  createdByDate : string
+  modifiedById : number
+  modifiedByDate : string
 }

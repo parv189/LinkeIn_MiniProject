@@ -1,5 +1,10 @@
 import { checklike } from './../../Models/PostLikes.model';
-import { AddPostLike, DeletePostLike, GetPosts, GetPostsSuccess } from './../../Store/action';
+import {
+  AddPostLike,
+  DeletePostLike,
+  GetPosts,
+  GetPostsSuccess,
+} from './../../Store/action';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Services/data.service';
 import { Router } from '@angular/router';
@@ -8,11 +13,15 @@ import {
   faThumbsUp,
   faComments,
   faPaperPlane,
+  faImage,
+  faNewspaper
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faThumbsUp as SolidTU,
   faComments as SolidC,
+  faCalendarWeek
 } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { Store } from '@ngrx/store';
 import { posts } from 'src/app/Models/PostLikes.model';
 import { selectposts } from 'src/app/Store/selecter';
@@ -45,17 +54,20 @@ export class FeedComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faComments = faComments;
   faPaperPlane = faPaperPlane;
+  faImage=faImage;
+  faYoutube = faYoutube;
+  faNewspaper=faNewspaper;
   SolidTU = SolidTU;
   SolidC = SolidC;
+  faCalendarWeek=faCalendarWeek;
 
   loaddata() {
     this.store.dispatch(GetPosts());
     this.store.select(selectposts).subscribe({
-      next:(res)=>{
-        this.userPosts =res
-
-      }
-    })
+      next: (res) => {
+        this.userPosts = res;
+      },
+    });
     this.data.GetUserbyid(this.id).subscribe({
       next: (res) => {
         this.UserData = res;
@@ -87,9 +99,6 @@ export class FeedComponent implements OnInit {
     //   }
     // }
     // console.log("sdfgsdf");
-
-
-
 
     // this.store.select(selectposts2).subscribe({
     //   next:(res)=>{
@@ -190,39 +199,37 @@ export class FeedComponent implements OnInit {
   //       },
   //     });
   //   }
-  onLike(postid: number, status: string){
-    if (status.substring(0, 5) == 'Liked'){
-      this.store.dispatch(DeletePostLike({id:Number(status.substring(6))}))
-    //   this.store.dispatch(GetPosts());
-    // this.store.select(selectposts).subscribe({
-    //   next:(res)=>{
-    //     this.userPosts =res
-    //   }
-    // })
-    }
-    else{
-      this.store.dispatch(AddPostLike({id:postid,user:this.UserData}))
-    //   this.store.dispatch(GetPosts());
-    // this.store.select(selectposts).subscribe({
-    //   next:(res)=>{
-    //     this.userPosts =res
-
-    //   }
-    // })
+  onLike(postid: number, status: string) {
+    if (status.substring(0, 5) == 'Liked') {
+      this.store.dispatch(DeletePostLike({ id: Number(status.substring(6)) }));
+      // this.store.dispatch(GetPosts());
+      // this.store.select(selectposts).subscribe({
+      //   next: (res) => {
+      //     this.userPosts = res;
+      //   },
+      // });
+    } else {
+      this.store.dispatch(AddPostLike({ id: postid, user: this.UserData }));
+      // this.store.dispatch(GetPosts());
+      // this.store.select(selectposts).subscribe({
+      //   next: (res) => {
+      //     this.userPosts = res;
+      //   },
+      // });
     }
   }
 
-    // for(let i=0 ; i<this.userPosts.length; i++){
-    //   this.data.GetPostLikes(this.userPosts[i].post_Id).subscribe({
-    //     next:(res)=>{
-    //       this.postlikes = res
-    //       var templikes = res.length
-    //       this.postlikescount.push(templikes)
-    //     }
-    //   });
-    // }
-    // this.userlikedPosts = this.postlikes.filter(x=>x.user_ID == this.id)
-    // console.log("userlikedPosts",this.userlikedPosts);
+  // for(let i=0 ; i<this.userPosts.length; i++){
+  //   this.data.GetPostLikes(this.userPosts[i].post_Id).subscribe({
+  //     next:(res)=>{
+  //       this.postlikes = res
+  //       var templikes = res.length
+  //       this.postlikescount.push(templikes)
+  //     }
+  //   });
+  // }
+  // this.userlikedPosts = this.postlikes.filter(x=>x.user_ID == this.id)
+  // console.log("userlikedPosts",this.userlikedPosts);
   //}
   // ondisLike(){
   //   this.status1 = !this.status1

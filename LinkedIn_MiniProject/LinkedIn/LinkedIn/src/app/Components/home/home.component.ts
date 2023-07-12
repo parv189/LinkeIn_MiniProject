@@ -63,7 +63,7 @@ console.log("users2",this.userdata2);
 this.userdata = this.userdata1.concat(this.userdata2);
 console.log("users",this.userdata);
 
-this.data.GetAllUser2().subscribe({
+this.data.GetAllUsers().subscribe({
   next:(res)=>{
     this.userdata = res;
     this.alluserdata = this.userdata;
@@ -73,7 +73,7 @@ this.data.GetAllUser2().subscribe({
 }
 onSearch(id:number){
   console.log("id in home",id);
-  this.data.getsearchid(id);
+  //this.data.getsearchid(id);
   localStorage.setItem('SearchId',id.toString())
   console.log(this.data.searchid);
   this.router.navigate(['/ShowOtherUserProfile'])

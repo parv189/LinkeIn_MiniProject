@@ -35,6 +35,8 @@ namespace MiniProject_LinkedIn.Models
         [JsonIgnore]
         public DbSet<OwnPosts> OwnPosts { get; set; }
         [JsonIgnore]
+        public DbSet<My_Network> My_Network { get; set; }
+        [JsonIgnore]
         public DbSet<CheckOwnPostLike> CheckOwnPostLikes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {

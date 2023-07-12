@@ -47,7 +47,7 @@ group by uc.UserConnection_Id,uc.User_ID,uc.ConnectedUser_ID,up.Post_Id,up.Photo
 order by Post_Id desc
 go
 --@id = x, is logedin user id
-exec usp_GetConnectionsPost2 @id = 27
+exec usp_GetConnectionsPost2 @id = 24
 go
 
 

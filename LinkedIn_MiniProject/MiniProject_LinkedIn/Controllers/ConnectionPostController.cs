@@ -17,7 +17,7 @@ namespace MiniProject_LinkedIn.Controllers
             _context = context;
         }
         [EnableCors("Policy1")]
-        [HttpGet("GetPosts/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetConnectionsPost(int id)
         {
             try
@@ -58,6 +58,7 @@ namespace MiniProject_LinkedIn.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        
         //[EnableCors("Policy1")]
         //[HttpGet("GetPosts2/{id2}")]
         //public async Task<IActionResult> GetConnectionsPost2(int id2)
