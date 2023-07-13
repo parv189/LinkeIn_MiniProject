@@ -17,20 +17,21 @@
               </div>
             </div>
           </div>
-          <div class="d-flex mt-3">
-            <div class="ms-5">
+          <div class="d-flex mt-2">
+            <div type="button" class="ms-4 photo p-2 border border-0 rounded-2" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="file.click()">
+              <input type="file" class="hide" accept="image/*" #file (change)="onChange($event)">
               <fa-icon class="fs-5" [icon]="faImage" style="color: rgb(69, 130, 221);"></fa-icon>
               <span class=" ms-2" style="color: rgb(89, 90, 90);">Photo</span>
             </div>
-            <div class="ms-5">
+            <div class="ms-4 photo p-2 border border-0 rounded-2">
               <fa-icon class="fs-5" [icon]="faYoutube" style="color: rgb(32, 177, 75);"></fa-icon>
               <span class="ms-2" style="color: rgb(89, 90, 90);">Video</span>
             </div>
-            <div class="ms-5">
+            <div class="ms-4 photo p-2 border border-0 rounded-2">
               <fa-icon class="fs-5" [icon]="faCalendarWeek" style="color: rgb(202, 146, 26);"></fa-icon>
               <span class="ms-2" style="color: rgb(89, 90, 90);">Event</span>
             </div>
-            <div class="ms-5">
+            <div class="ms-4 photo p-2 border border-0 rounded-2">
               <fa-icon class="fs-5" [icon]="faNewspaper" style="color: rgb(173, 26, 26);"></fa-icon>
               <span class="ms-2" style="color: rgb(89, 90, 90);">Write article</span>
             </div>
@@ -85,6 +86,27 @@
         </div>
         <p class="card-text position-absolute bottom-0 end-0 mx-2" style="color:rgb(95, 95, 95);">ceated on :
           {{post.createdByDate|date:"dd-MMM"}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center m-5 fs-5" style="color: rgb(36, 133, 189);" (click)="file.click()">
+          Select Images To Share
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn rounded-pill border-primary text-primary cancle" data-bs-dismiss="modal">Cancle</button>
+        <button type="button" class="btn rounded-pill done">Done</button>
       </div>
     </div>
   </div>

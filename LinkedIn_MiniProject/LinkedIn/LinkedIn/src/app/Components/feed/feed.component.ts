@@ -33,6 +33,7 @@ import { selectposts } from 'src/app/Store/selecter';
 export class FeedComponent implements OnInit {
   id: number | null = Number(localStorage.getItem('User_Id'));
   UserData: any;
+  ImageFile!:File
   constructor(
     private data: DataService,
     private router: Router,
@@ -199,6 +200,19 @@ export class FeedComponent implements OnInit {
   //       },
   //     });
   //   }
+  openFile(){
+    console.log("hiiii");
+    //document.querySelector('input').click()
+  }
+  onChange(e:any){
+    this.ImageFile = e.target.files[0]
+    console.log(this.ImageFile);
+
+  }
+
+  onAddPost(){
+    this.router.navigate(['/Addpost'])
+    }
   onLike(postid: number, status: string) {
     if (status.substring(0, 5) == 'Liked') {
       this.store.dispatch(DeletePostLike({ id: Number(status.substring(6)) }));
